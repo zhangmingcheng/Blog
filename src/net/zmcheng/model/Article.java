@@ -30,12 +30,12 @@ public class Article implements java.io.Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	@ManyToOne(cascade ={CascadeType.ALL},optional=false,targetEntity = User.class)
+	 @JoinColumn(name="userId")
 	public User getUser() {
 		return user;
 	}
-	 @ManyToOne(cascade ={CascadeType.ALL},optional=false,targetEntity = User.class)
-	 @JoinColumn(name="userId")
+	 
 	public void setUser(User user) {
 		this.user = user;
 	}

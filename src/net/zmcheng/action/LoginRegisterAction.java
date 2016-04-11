@@ -57,7 +57,7 @@ public class LoginRegisterAction extends ActionSupport implements ModelDriven<Us
         	     HttpSession httpSession = request.getSession();
             	 httpSession.setAttribute("user", user);
             	 httpSession.setAttribute("province", province);
-            	 httpSession.setMaxInactiveInterval(2000);
+            	 httpSession.setMaxInactiveInterval(5000);
         }else {
         	request.setAttribute("usererror", "密码或者用户名输入有误");
         	return LOGIN;
@@ -77,7 +77,7 @@ public class LoginRegisterAction extends ActionSupport implements ModelDriven<Us
  		 httpSession = request.getSession();
      	 httpSession.setAttribute("user", user);
     	 httpSession.setAttribute("province", province);
-     	 httpSession.setMaxInactiveInterval(2000);
+     	 httpSession.setMaxInactiveInterval(5000);
 			return SUCCESS;
 		}
 	   else request.setAttribute("usererror", "注册失败，请重新注册");

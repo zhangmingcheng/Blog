@@ -6,21 +6,18 @@
     <package name="userInformation"  namespace="/user"  extends="struts-default">
     
         <action name="login" class="net.zmcheng.action.LoginRegisterAction"  method="login">
-            <result>/WEB-INF/view/index.jsp</result>
-            <result name="login">/WEB-INF/view/login.jsp</result>
+            <result>/WEB-INF/wp-admin/index.jsp</result>
+            <result name="login">/WEB-INF/wp-admin/login.jsp</result>
         </action>   
        <action name="register" class="net.zmcheng.action.LoginRegisterAction"  method="register">
-            <result>/WEB-INF/view/index.jsp</result>
-            <result name="input">/WEB-INF/view/register.jsp</result>
-        </action>   
-        <action name="GetUser" class="net.zmcheng.action.LoginRegisterAction">
-            <result>/WEB-INF/view/register.jsp</result>
+            <result>/WEB-INF/wp-admin/index.jsp</result>
+            <result name="input">/WEB-INF/wp-admin/register.jsp</result>
         </action>   
           <action name="quit" class="net.zmcheng.action.LoginRegisterAction" method="quit">
-            <result>/WEB-INF/view/index.jsp</result>
+            <result>/WEB-INF/wp-admin/index.jsp</result>
         </action>   
          <action name="uploadphotoaction" class="net.zmcheng.action.UploadPhotoAction" >
-            <result>/WEB-INF/view/uploadPhoto.jsp</result>
+            <result>/WEB-INF/wp-admin/uploadPhoto.jsp</result>
         </action>  
     </package>
     

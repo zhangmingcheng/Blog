@@ -11,6 +11,13 @@
 	<constant name="struts-i18n.encoding" value="UTF-8"></constant>
    <include file="./net/zmcheng/action/articleInfo.xml"></include>
    <include file="./net/zmcheng/action/userInfo.xml"></include>
+    <package name="transfer2"  namespace="/wp-admin"  extends="struts-default">
+       
+        <action name="*" class="net.zmcheng.action.transferAction">
+            <result>/WEB-INF/wp-admin/{1}.jsp</result>
+        </action>   
+        
+    </package>
      <package name="transfer"  namespace="/"  extends="struts-default">
        
         <action name="*" class="net.zmcheng.action.transferAction">
@@ -18,6 +25,7 @@
         </action>   
         
     </package>
+   
    
     
 </struts>
