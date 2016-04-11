@@ -26,6 +26,7 @@
                <value>net.zmcheng.model.User</value>
                <value>net.zmcheng.model.Province</value>
                <value>net.zmcheng.model.City</value>
+               <value>net.zmcheng.model.Article</value>
                </list>
            </property>
            <property name="hibernateProperties">
@@ -47,6 +48,10 @@
          <tx:attributes>
               <tx:method name="get*" read-only="true"/>
               <tx:method name="User*" propagation="REQUIRED"/>
+              <tx:method name="write*" propagation="REQUIRED"/>
+              <tx:method name="update*" propagation="REQUIRED"/>
+              <tx:method name="select*" propagation="REQUIRED"/>
+              <tx:method name="delete*" propagation="REQUIRED"/>
          </tx:attributes>
      </tx:advice>
   

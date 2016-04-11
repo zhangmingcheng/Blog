@@ -9,8 +9,15 @@
 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
 	<!-- 配置视图编码方式为UTF-8-->
 	<constant name="struts-i18n.encoding" value="UTF-8"></constant>
+   <include file="./net/zmcheng/action/articleInfo.xml"></include>
    <include file="./net/zmcheng/action/userInfo.xml"></include>
-   
+     <package name="transfer"  namespace="/"  extends="struts-default">
+       
+        <action name="*" class="net.zmcheng.action.transferAction">
+            <result>/WEB-INF/view/{1}.jsp</result>
+        </action>   
+        
+    </package>
    
     
 </struts>

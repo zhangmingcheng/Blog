@@ -52,11 +52,5 @@
         </action>    
     </package>
  
-     <package name="transfer"  namespace="/"  extends="struts-default">
-       
-        <action name="*" class="net.zmcheng.action.transferAction">
-            <result>/WEB-INF/view/{1}.jsp</result>
-        </action>   
-        
-    </package>
+   
 </struts>
