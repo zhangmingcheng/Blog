@@ -18,7 +18,7 @@
 					<a class="blog-nav-item" href="/Blog/login">登陆</a>
 				</div>
 				<div class="col-md-1">
-					<a class="blog-nav-item" href="/Blog/register">注册</a>
+					<a class="blog-nav-item" href="/Blog/wp-admin/register">注册</a>
 				</div>
 			</s:if>
 			<s:else>

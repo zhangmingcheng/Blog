@@ -7,4 +7,5 @@ public interface articleService {
     public void delete(Article article) throws Exception;
     public void update(Article article) throws Exception;
     public void select(Article article) throws Exception;
+    public Article getArticle(int id) throws Exception;
 }

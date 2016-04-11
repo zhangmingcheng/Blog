@@ -11,12 +11,16 @@ import net.zmcheng.model.Article;
 @Component
 public class articleDaoImpl implements articleDao {
 	private  SessionFactory sessionFactory;
-	@Override
+	//写博客
 	public void write(Article article) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(article);
 	}
-
+   //得到指定博文
+	public Article getArticle(int id) throws Exception{
+		Session session = sessionFactory.getCurrentSession();
+		return (Article)session.get(Article.class,id);
+	}
 	@Override
 	public void update(Article article) throws Exception {
 		// TODO Auto-generated method stub

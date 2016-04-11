@@ -33,6 +33,18 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     public String write() throws Exception{
     	article.setUser(this.getSessionUser());
     	articleServiceImpl.write(article);
+   	    HttpSession httpSession = request.getSession(false);
+   	    httpSession.setAttribute("articleId", article.getId());
+    	return SUCCESS;
+    }
+    //打开博文
+    public String open() throws Exception{
+        Article article2 = articleServiceImpl.getArticle(article.getId());
+        article.setContent(article2.getContent());
+        article.setTitle(article2.getTitle());
+        article.setPostdate(article2.getPostdate());
+        article.setReadNum(article2.getReadNum()+1);
+        article.setUser(article2.getUser());
     	return SUCCESS;
     }
     public Article getModel(){

@@ -31,7 +31,7 @@ div {
 <body>
 	<%@ include file="head.jsp"%>
 	<div class="container">
-		<div class="row" style="height: 600px">
+		<div class="row" style="height: 400px">
 			<!-- 左半部分 -->
 			<div class="col-md-9">
 			   <h4 style="color:blue" >撰写新文章:</h4>
@@ -43,7 +43,7 @@ div {
 							<option>----选择分类----</option>
 					</select></th></tr>
 					<tr><th colspan="2">
-						<textarea id="myEditor" style="height: 400px; margin: 5px 0px;" name="content" ></textarea></th></tr>
+						<textarea id="myEditor" style="height: 270px; margin: 5px 0px;" name="content" ></textarea></th></tr>
 						<tr><th>
 							   <input type="submit" value="提交" type="button"   class="btn btn-primary"></th><th> <input
 								type="reset" value="重置"  type="button"  class="btn btn-primary"

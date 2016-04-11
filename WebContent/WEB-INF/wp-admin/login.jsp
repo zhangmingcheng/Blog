@@ -23,7 +23,7 @@
 		<table style=" margin-top: 5px"><tr><th>
 		<a href="/Blog/index"><button type="button" class="btn btn-primary">返回后台主页</button></a>
 		</th><th style="padding-left: 138px"><a href="/Blog/wp-admin/register"><button   type="button" class="btn btn-primary" >注册</button></a></th></tr>
-	   <tr><th></th><th><s:property value="#request.usererror" /></th></tr></table>
+	   <tr><th></th><th><h5 style="color: red"><s:property value="#request.usererror" /></h5></th></tr></table>
 	</form>
 </div>
 <div style="text-align:center;">

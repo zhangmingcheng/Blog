@@ -10,11 +10,14 @@ import net.zmcheng.service.articleService;
 @Component
 public class articleServiceImpl implements articleService {
 	private articleDao articleDaoImpl;
-	@Override
+	//写博文
 	public void write(Article article) throws Exception {
 		articleDaoImpl.write(article);
 	}
-
+  //得到指定博文
+	public Article getArticle(int id) throws Exception{
+		return articleDaoImpl.getArticle(id);
+	}
 	@Override
 	public void delete(Article article) throws Exception {
 		// TODO Auto-generated method stub

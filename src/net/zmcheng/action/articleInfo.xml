@@ -6,7 +6,10 @@
     <package name="articleInformation"  namespace="/text"  extends="struts-default">
     
         <action name="write" class="net.zmcheng.action.ArticleAction"  method="write">
-            <result>/WEB-INF/view/index.jsp</result>
+            <result>/WEB-INF/wp-admin/writerAfter.jsp</result>
+        </action>   
+        <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
+            <result>/WEB-INF/view/showArticle.jsp</result>
         </action>   
  </package>
 </struts>
