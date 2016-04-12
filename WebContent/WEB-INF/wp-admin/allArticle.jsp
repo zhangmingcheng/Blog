@@ -60,16 +60,16 @@
                  <nav>
                          <ul class="pager">
                          <s:if test="currentPage ==1">  
-                            <li>Previous></li>
+                            <li><a href="#">Previous</a></li>
                           </s:if>
                           <s:else>
-                             <li><a href="/Blog/text/articles?currentPage=<s:property value="currentPage-1"/>">Previous></a></li>
+                             <li><a href="/Blog/text/articles?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
                           </s:else>
                            <s:if test="currentPage !=totalPage">  
-                                Next
+                              <li> <a href="/Blog/text/articles?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
                            </s:if>
                            <s:else>
-                              <li><a href="/Blog/text/articles?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
+                              <li><a href="#">Next</a></li>
                            </s:else>
                           </ul>
                 </nav>              

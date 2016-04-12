@@ -24,10 +24,12 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 			 System.out.println("当前页=="+paging.getCurrentPage());
 			   int len = articleServiceImpl.getAllArticle();
 			   int totalpage = paging.countTotalPage(len);
-			   paging.setTotalPage(totalpage);
+			   System.out.println("总页数=="+totalpage);
 			   paging.setAllRow(len);
+			   paging.setTotalPage(totalpage);
 			   //计算当前页开始的数据
 			   int start =paging.countOffset();
+			   System.out.println("start=="+start);
 			   list =  articleServiceImpl.getArticles(start, Paging.getPageSize());
 			   return SUCCESS;
 		   }
