@@ -16,4 +16,6 @@ public interface userDao {
 	public Set<Province> getProvince() throws Exception;
 	//得到用户居住地信息
 	public City getHome(int CityId) throws Exception;
+	//得到指定省的所有城市
+	public Set<City> getCity(int ProId) throws Exception;
 }

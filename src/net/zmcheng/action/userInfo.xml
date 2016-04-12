@@ -14,7 +14,7 @@
             <result name="input">/WEB-INF/wp-admin/register.jsp</result>
         </action>   
           <action name="quit" class="net.zmcheng.action.LoginRegisterAction" method="quit">
-            <result>/WEB-INF/wp-admin/index.jsp</result>
+            <result>/WEB-INF/wp-admin/login.jsp</result>
         </action>   
          <action name="uploadphotoaction" class="net.zmcheng.action.UploadPhotoAction" >
             <result>/WEB-INF/wp-admin/uploadPhoto.jsp</result>

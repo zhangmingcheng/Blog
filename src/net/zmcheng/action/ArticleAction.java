@@ -45,6 +45,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         article.setPostdate(article2.getPostdate());
         article.setReadNum(article2.getReadNum()+1);
         article.setUser(article2.getUser());
+        articleServiceImpl.update(article);
     	return SUCCESS;
     }
     public Article getModel(){

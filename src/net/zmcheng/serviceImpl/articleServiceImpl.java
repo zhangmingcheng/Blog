@@ -21,13 +21,12 @@ public class articleServiceImpl implements articleService {
 	@Override
 	public void delete(Article article) throws Exception {
 		// TODO Auto-generated method stub
-
+		articleDaoImpl.update(article);
 	}
 
-	@Override
+	//更新博文
 	public void update(Article article) throws Exception {
-		// TODO Auto-generated method stub
-
+      
 	}
 
 	@Override

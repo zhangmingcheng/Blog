@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -82,7 +83,7 @@ public class User implements java.io.Serializable{
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	@ManyToOne(cascade ={CascadeType.ALL},targetEntity = Province.class)
+	@ManyToOne(cascade ={CascadeType.ALL},targetEntity = Province.class,fetch = FetchType.LAZY)
 	 @JoinColumn(name="provinceId")
 	public Province getProvince() {
 		return province;

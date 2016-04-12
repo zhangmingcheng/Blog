@@ -24,7 +24,9 @@
 			<div class="col-md-9">
 			   <div style="height:40px;width: 100%;text-align:center;">
 			       <h3>${title}</h3>
+			       <h5>${user.getName()}&nbsp;&nbsp;阅读（${readNum}）</h5>
 			   </div>
+			   <HR size=2><!-- 一条线 -->
 			</div>
 			<!-- 右半部分 -->
 			<div class="col-md-3" style="background-color: green; height: 600px">

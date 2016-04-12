@@ -21,9 +21,10 @@ public class articleDaoImpl implements articleDao {
 		Session session = sessionFactory.getCurrentSession();
 		return (Article)session.get(Article.class,id);
 	}
-	@Override
+//更新博文
 	public void update(Article article) throws Exception {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.update(article);
 
 	}
 

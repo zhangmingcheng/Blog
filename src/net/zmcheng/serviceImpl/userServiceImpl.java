@@ -26,6 +26,10 @@ public class userServiceImpl implements userService {
 	 public City UserCity(int CityId) throws Exception{
 		 return userDaoImpl.getHome(CityId);
 	 }
+	 //得到指定省的所有城市
+	 public Set<City> getCitys(int ProId) throws Exception{
+		 return  userDaoImpl.getCity(ProId);
+	 }
 	public boolean UserRegister(User user) throws Exception {
 		return userDaoImpl.addUser(user);
 	}

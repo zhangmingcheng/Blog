@@ -3,6 +3,7 @@ package net.zmcheng.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,7 +35,7 @@ public class City  implements java.io.Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	 @ManyToOne(cascade ={CascadeType.ALL},optional=false,targetEntity = Province.class)
+	 @ManyToOne(cascade ={CascadeType.ALL},optional=false,fetch = FetchType.LAZY,targetEntity = Province.class)
 	 @JoinColumn(name="pro_id")
 	public Province getProvince() {
 		return province;

@@ -16,4 +16,6 @@ public interface userService {
      public Set<Province> UserProvince() throws Exception;
      //得到用户的居住信息
      public City UserCity(int CityId) throws Exception;
+     //得到指定省的所有城市
+     public Set<City> getCitys(int ProId) throws Exception;
 }

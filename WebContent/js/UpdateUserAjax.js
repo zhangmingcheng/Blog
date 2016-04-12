@@ -32,12 +32,12 @@
       	  $("response3").innerHTML = request.responseText.evalJSON();
       }
         function UpdatePro(){
-   	 var myselect=document.getElementById("select1");
-	 var index=myselect.selectedIndex ; //拿到选中项的索引,selectedIndex代表的是你所选中项的index
-	 var Id = myselect.options[index].value;//拿到选中项options的value	
-     var url = '/Blog/ajax/getCitys.action';
-     var param = 'ProId='+Id;
-     var myAjax = new Ajax.Request(
+   	      var myselect=document.getElementById("select1");
+	      var index=myselect.selectedIndex ; //拿到选中项的索引,selectedIndex代表的是你所选中项的index
+	      var Id = myselect.options[index].value;//拿到选中项options的value	
+         var url = '/Blog/ajax/getCitys.action';
+         var param = 'ProId='+Id;
+        var myAjax = new Ajax.Request(
          	  url,{method: 'post', parameters: param, onComplete: showResponse4, asynchronous: true}    	 
          	); 
    }

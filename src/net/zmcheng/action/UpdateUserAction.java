@@ -70,15 +70,8 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<User>
 		return SUCCESS;
 	}
 	//得到某省的所有城市
-	public String GetCitys() throws Exception{
-		HttpSession httpSession = request.getSession(false);
-		Set<Province> pros  = (HashSet<Province>)httpSession.getAttribute("province");
-        for (Province province : pros) {
-			if(province.getId()==ProId){
-				citys = province.getCitys();
-				break;
-			}
-		}
+	public String GetCitys() throws Exception{	
+		citys =userServiceImpl.getCitys(ProId);
 		return SUCCESS;
 	}
 	//修改邮箱

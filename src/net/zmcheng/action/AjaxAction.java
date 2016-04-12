@@ -6,7 +6,6 @@ import com.opensymphony.xwork2.ActionSupport;
 public class AjaxAction extends ActionSupport {
      private String num1;
     public String execute(){
-    	System.out.println("wowowowo");
     	return SUCCESS;
     }
 	public String getNum1() {

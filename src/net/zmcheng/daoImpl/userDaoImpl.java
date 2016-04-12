@@ -31,8 +31,8 @@ public class userDaoImpl implements userDao {
 			user.setEmail(temp.getEmail());
 			user.setPhoto(temp.getPhoto());
 			user.setCreatetime(temp.getCreatetime());
-			user.setCity(temp.getCity());
 			user.setProvince(temp.getProvince());
+			user.setCity(temp.getCity());
 			return true;
 		}
 	 return false;
@@ -77,6 +77,18 @@ public class userDaoImpl implements userDao {
 		     province.add(temp);
 		}
 		return province;
+	}
+	//得到指定省的所有城市
+	public Set<City> getCity(int ProId) throws Exception{
+		 Session session = sessionFactory.getCurrentSession();
+			Query query = session.createQuery("from City as c where c.province.id=:provinceId");
+			query.setInteger("provinceId", ProId);
+			List<City> result = query.list();
+			Set<City> citys = new HashSet<City>();
+			for(City temp: result){
+			     citys.add(temp);
+			}
+			return citys;
 	}
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
