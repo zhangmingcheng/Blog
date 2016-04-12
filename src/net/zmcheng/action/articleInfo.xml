@@ -11,5 +11,12 @@
         <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
             <result>/WEB-INF/view/showArticle.jsp</result>
         </action>   
+         <action name="edit" class="net.zmcheng.action.ArticleAction"  method="edit">
+            <result>/WEB-INF/wp-admin/editArticle.jsp</result>
+        </action>   
+        <action name="edit2" class="net.zmcheng.action.ArticleAction"  method="edit2">
+            <result>/WEB-INF/view/showArticle.jsp</result>
+        </action>   
+      
  </package>
 </struts>

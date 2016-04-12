@@ -47,6 +47,11 @@
                <param name="root">citys</param>
             </result>    
         </action>    
+         <action name="zanCount" class="net.zmcheng.action.ArticleAction"  method="getZan">
+             <result name="success" type="json">
+                 <param name="root">zanCount</param>
+              </result>  
+        </action>   
     </package>
  
    

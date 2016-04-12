@@ -21,6 +21,7 @@ public class Article implements java.io.Serializable{
      private int readNum;
      private Date postdate = new Date();
      private String content;
+     private int zanNum;
      @Id
      @GeneratedValue
 	public Integer getId() {
@@ -55,7 +56,7 @@ public class Article implements java.io.Serializable{
 	public void setReadNum(int readNum) {
 		this.readNum = readNum;
 	}
-	@Column(name="postDate")
+	@Column(name="postdate")
 	public Date getPostdate() {
 		return postdate;
 	}
@@ -71,4 +72,13 @@ public class Article implements java.io.Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
+  @Column(name="zanNum")
+	public int getZanNum() {
+		return zanNum;
+	}
+
+	public void setZanNum(int zanNum) {
+		this.zanNum = zanNum;
+	}
+
 }

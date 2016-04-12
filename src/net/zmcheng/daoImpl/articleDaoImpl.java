@@ -21,7 +21,7 @@ public class articleDaoImpl implements articleDao {
 		Session session = sessionFactory.getCurrentSession();
 		return (Article)session.get(Article.class,id);
 	}
-//更新博文
+   //更新博文
 	public void update(Article article) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(article);

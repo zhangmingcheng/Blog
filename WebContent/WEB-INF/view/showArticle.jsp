@@ -14,6 +14,8 @@
 <link href="<%=path%>/css/blog.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
+<script src="<%=path %>/js/prototype.js"></script>
+<script src="<%=path %>/js/UpdateUserAjax.js"></script>
 </head>
 
 <body>
@@ -27,6 +29,13 @@
 			       <h5>${user.getName()}&nbsp;&nbsp;阅读（${readNum}）</h5>
 			   </div>
 			   <HR size=2><!-- 一条线 -->
+			   <div>
+			       ${content}
+			   </div>
+			   <div style="background-color: #F0F0F0;text-align: center;">
+			     未经允许不得转载
+			   </div>
+			   <button id="ZAN" style="margin-top: 20px;margin-left: 45%"type="button" class="btn btn-info glyphicon glyphicon-thumbs-up"  onClick="UpdateZan(${id});">&nbsp;赞(${zanNum})</button>
 			</div>
 			<!-- 右半部分 -->
 			<div class="col-md-3" style="background-color: green; height: 600px">

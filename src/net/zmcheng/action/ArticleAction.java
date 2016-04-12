@@ -20,7 +20,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	private Article article = new Article();
 	private HttpServletRequest request;
 	private articleService articleServiceImpl;
-	private String result;
+	private int zanCount;
 	public void setServletRequest(HttpServletRequest request){
 		this.request = request;
 	}
@@ -32,9 +32,25 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     //写博文
     public String write() throws Exception{
     	article.setUser(this.getSessionUser());
+    	article.setZanNum(0);
     	articleServiceImpl.write(article);
    	    HttpSession httpSession = request.getSession(false);
    	    httpSession.setAttribute("articleId", article.getId());
+    	return SUCCESS;
+    }
+    //编辑指定博文,为指定博文传入之前存的内容
+    public String edit() throws Exception{
+    	Article article2 = articleServiceImpl.getArticle(article.getId());
+    	article.setContent(article2.getContent());
+    	article.setTitle(article2.getTitle());
+    	return SUCCESS;
+    }
+    //编辑指定博文，更新博文
+    public String edit2() throws Exception{
+    	Article article2 = articleServiceImpl.getArticle(article.getId());
+    	article2.setContent(article.getContent());
+    	article2.setTitle(article.getTitle());
+    	articleServiceImpl.update(article2);
     	return SUCCESS;
     }
     //打开博文
@@ -42,10 +58,22 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         Article article2 = articleServiceImpl.getArticle(article.getId());
         article.setContent(article2.getContent());
         article.setTitle(article2.getTitle());
+        article.setZanNum(article2.getZanNum());
         article.setPostdate(article2.getPostdate());
         article.setReadNum(article2.getReadNum()+1);
+        article2.setReadNum(article2.getReadNum()+1);
+        articleServiceImpl.update(article2);
         article.setUser(article2.getUser());
         articleServiceImpl.update(article);
+    	return SUCCESS;
+    }
+   //修改赞数,并得到赞数
+    public String getZan()  throws Exception{
+    	System.out.println("num====");
+    	 Article article2 = articleServiceImpl.getArticle(article.getId());
+    	 zanCount=article2.getZanNum()+1;
+    	 article2.setZanNum(article2.getZanNum()+1);
+    	 articleServiceImpl.update(article2);
     	return SUCCESS;
     }
     public Article getModel(){
@@ -59,10 +87,11 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	public void setArticleServiceImpl(articleService articleServiceImpl) {
 		this.articleServiceImpl = articleServiceImpl;
 	}
-	public String getResult() {
-		return result;
+	public int getZanCount() {
+		return zanCount;
 	}
-	public void setResult(String result) {
-		this.result = result;
+	public void setZanCount(int zanCount) {
+		this.zanCount = zanCount;
 	}
+
 }

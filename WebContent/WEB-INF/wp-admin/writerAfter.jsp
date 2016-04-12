@@ -33,7 +33,7 @@
 				     <tr><th style="height:50px; background-color: #FFFFFF;width:100%" class="glyphicon glyphicon-ok">发布成功</th></tr>
 				     <tr><th class="info">随笔标题:<s:property value="title"/></th></tr>
 				     <tr><th class="info"><a href="/Blog/text/open?id=${articleId}">» 立即查看</a></th></tr>
-				     <tr><th class="info">» 立即编辑</th></tr>
+				     <tr><th class="info"><a href="/Blog/text/edit?id=${articleId}">» 立即编辑</a></th></tr>
 				     <tr><th class="info">» 后台首页</th></tr>
 				     <tr><th class="info">»博客首页</th></tr>
 				 </table>

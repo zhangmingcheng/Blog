@@ -31,19 +31,20 @@ div {
 <body>
 	<%@ include file="head.jsp"%>
 	<div class="container">
-		<div class="row" style="height: 600px">
+		<div class="row" style="height: 400px">
 			<!-- 左半部分 -->
 			<div class="col-md-9">
-			   <h4 style="color:blue" >撰写新文章:</h4>
+			   <h4 style="color:blue" >编辑文章:</h4>
 				<div class="main" style="margin: 20px 0px;">
-					<form method="post" action="/Blog/text/write.action">
+					<form method="post" action="/Blog/text/edit2.action">
+					<div style="display: none;"><input  type="text"  name="id" value="${id}"></div>
 					<table class="table">
-					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle"></th></tr>
+					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" value="${title}"></th></tr>
 				     <tr><th> 分类：</th><th><select  class="title_input" name="category">
 							<option>----选择分类----</option>
 					</select></th></tr>
 					<tr><th colspan="2">
-						<textarea id="myEditor" style="height: 400px; margin: 5px 0px;" name="content" ></textarea></th></tr>
+						<textarea id="myEditor" style="height: 270px; margin: 5px 0px;"  name="content"  id="editArticle">${content }</textarea></th></tr>
 						<tr><th>
 							   <input type="submit" value="提交" type="button"   class="btn btn-primary"></th><th> <input
 								type="reset" value="重置"  type="button"  class="btn btn-primary"

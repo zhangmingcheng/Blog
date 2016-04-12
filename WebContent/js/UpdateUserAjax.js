@@ -63,4 +63,14 @@
            var temp = request.responseText.evalJSON();
            $("Responce3").innerHTML =temp;      
          }  
-       
+       //得到赞数
+         function UpdateZan(num){
+         	 var url = '/Blog/ajax/zanCount.action';
+              var param = 'id='+num;
+              var myAjax = new Ajax.Request(
+                  	  url,{method: 'post', parameters: param, onComplete: showResponse6, asynchronous: true}    	 
+                  	); 
+            }
+              function showResponse6(request){
+                $("ZAN").innerHTML ='赞（'+request.responseText.evalJSON()+'）';
+              }  
