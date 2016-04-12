@@ -6,11 +6,11 @@
     <package name="userInformation"  namespace="/user"  extends="struts-default">
     
         <action name="login" class="net.zmcheng.action.LoginRegisterAction"  method="login">
-            <result>/WEB-INF/wp-admin/index.jsp</result>
+            <result>/WEB-INF/wp-admin/userInformation.jsp</result>
             <result name="login">/WEB-INF/wp-admin/login.jsp</result>
         </action>   
        <action name="register" class="net.zmcheng.action.LoginRegisterAction"  method="register">
-            <result>/WEB-INF/wp-admin/index.jsp</result>
+            <result>/WEB-INF/wp-admin/userInformation.jsp</result>
             <result name="input">/WEB-INF/wp-admin/register.jsp</result>
         </action>   
           <action name="quit" class="net.zmcheng.action.LoginRegisterAction" method="quit">

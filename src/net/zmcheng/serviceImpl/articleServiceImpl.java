@@ -1,5 +1,7 @@
 package net.zmcheng.serviceImpl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -10,6 +12,14 @@ import net.zmcheng.service.articleService;
 @Component
 public class articleServiceImpl implements articleService {
 	private articleDao articleDaoImpl;
+	//分页查询数据setFirstResult(start)中索引start是从0开始的
+  	public List<Article> getArticles(final int start,final int  length) throws Exception{
+  		return articleDaoImpl.getArticles(start, length);
+  	}
+  //得到所有博文
+  	public int getAllArticle() throws Exception{
+  		return articleDaoImpl.getAllArticle();
+  	}
 	//写博文
 	public void write(Article article) throws Exception {
 		articleDaoImpl.write(article);

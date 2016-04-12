@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="col-md-10">
 				<ul class="nav nav-pills">
-					<li><a class="blog-nav-item active" href="#">首页</a></li>
+					<li><a class="blog-nav-item active" href="/Blog/text/articles">首页</a></li>
 					<li><a class="blog-nav-item" href="/Blog/wp-admin/writeArticle">写文章</a></li>
 					<li><a class="blog-nav-item" href="#">随便逛逛</a></li>
 					<li><a class="blog-nav-item" href="#">文件下载</a></li>

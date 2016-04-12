@@ -19,7 +19,6 @@
 </head>
 <body>
 
-	
     <%@ include file="head.jsp" %> 
 	<div class="container">
 		<div class="row">
@@ -55,15 +54,8 @@
 						用户名:<s:property value="#session.user.getName()" />
 					</h4>
 				</div>
-				<div style="height: 450px">
-					<ul class="nav nav-tabs ">
-						<li class="active"><a href="#tab1" data-toggle="tab">个人资料</a></li>
-						<li><a href="#tab2" data-toggle="tab">我的好友</a></li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane active" id="tab1">			
-																								  
-								<form id="form1" name="form1" method="post"  action="">									
+				<div style="height: 450px">																			  
+							<form id="form1" name="form1" method="post"  action="">									
 										<table class="table table-hover">	
 										<tr><th style="width: 80px"><h5>新  密  码:</h5></th><th style="width: 100px"><input type="password" name="password" id="password" /></th>
 										<th><input type="button"  value="修改" class="btn btn-primary" onClick="UpdatePsw();"/><th>
@@ -109,16 +101,7 @@
 		                        </table>	
                                <table class="table table-hover">	
 										 <tr><th  style="width: 80px"><h5>注册时间:</h5></th><th><h5>${user.getCreatetime() }</h5></th></tr>	                                      
-		                        </table>	
-                              
-                              
-					   
-						</div>
-
-						<div class="tab-pane" id="tab2">
-							ssss
-						</div>
-						
+		                        </table>	                 		
 				</div>
 				<!--
                       <div style="height: 300px">
@@ -131,8 +114,6 @@
 			<div class="col-md-3"></div>
 		</div>
 	</div>
-
-   </div>
 	<footer class="blog-footer">
 	<p>
 		Blog template built by <a href="https://www.zmcheng.net">@zmcheng</a>.
