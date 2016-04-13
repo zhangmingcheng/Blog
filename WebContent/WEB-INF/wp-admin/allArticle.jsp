@@ -30,9 +30,9 @@
            '<th>标题</th><th>作者</th><th>日期</th><th>编辑</th><th>删除</th>'+
            '</tr>';
            for(var n = 0;n<temp.length;n++){
-        	   strs+='<tr style="height:50px"><td>'+temp[n].title+'</td><td>'+temp[n].user.name+'</td><td>'+temp[n].postdate+'</td>'+
+        	   strs+='<tr style="height:50px"><td><a href="/Blog/text/open?id='+temp[n].id+'">'+temp[n].title+'</a></td><td>'+temp[n].user.name+'</td><td>'+temp[n].postdate+'</td>'+
         	   '<td><a href="/Blog/text/edit?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
-        	 '<td><button type="button" class="btn btn-success" onclick="deleteArticle('+temp[n].id+'">删除</button></td></tr>';
+        	 '<td><button type="button" class="btn btn-success" onclick="deleteArticle('+temp[n].id+')">删除</button></td></tr>';
            }          
          $("deleteArt").innerHTML = strs;
        }
@@ -76,7 +76,7 @@
                    </tr>            
                     <s:iterator value="list"  id="selectNum1">                
                         <tr style="height:50px">
-                        <td>${selectNum1.getTitle()}</td>
+                        <td><a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a></td>
                         <td>${selectNum1.getUser().getName()}</td>
                          <td>${selectNum1.getPostdate()}</td>
                          <td><a href="/Blog/text/edit?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>

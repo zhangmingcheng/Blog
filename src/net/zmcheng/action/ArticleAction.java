@@ -66,7 +66,6 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         article2.setReadNum(article2.getReadNum()+1);
         articleServiceImpl.update(article2);
         article.setUser(article2.getUser());
-        articleServiceImpl.update(article);
     	return SUCCESS;
     }
    //修改赞数,并得到赞数

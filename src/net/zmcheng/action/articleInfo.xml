@@ -9,13 +9,13 @@
             <result>/WEB-INF/wp-admin/writerAfter.jsp</result>
         </action>   
         <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
-            <result>/WEB-INF/view/showArticle.jsp</result>
+            <result>/WEB-INF/wp-admin/showArticle.jsp</result>
         </action>   
          <action name="edit" class="net.zmcheng.action.ArticleAction"  method="edit">
             <result>/WEB-INF/wp-admin/editArticle.jsp</result>
         </action>   
         <action name="edit2" class="net.zmcheng.action.ArticleAction"  method="edit2">
-            <result>/WEB-INF/view/writerAfter.jsp</result>
+            <result>/WEB-INF/wp-admin/writerAfter.jsp</result>
         </action>   
          <action name="articles" class="net.zmcheng.action.AllArticleAction" >
             <result>/WEB-INF/wp-admin/allArticle.jsp</result>
