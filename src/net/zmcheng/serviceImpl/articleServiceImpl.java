@@ -16,6 +16,9 @@ public class articleServiceImpl implements articleService {
   	public List<Article> getArticles(final int start,final int  length) throws Exception{
   		return articleDaoImpl.getArticles(start, length);
   	}
+  	public int getArticleNum(int id) throws Exception{
+  		return articleDaoImpl.getArticleNum(id);
+  	}
   //得到所有博文
   	public int getAllArticle() throws Exception{
   		return articleDaoImpl.getAllArticle();
@@ -28,11 +31,11 @@ public class articleServiceImpl implements articleService {
 	public Article getArticle(int id) throws Exception{
 		return articleDaoImpl.getArticle(id);
 	}
-	@Override
+	//删除指定博文
 	public void delete(Article article) throws Exception {
-	
+		articleDaoImpl.delete(article);
 	}
-
+   
 	//更新博文
 	public void update(Article article) throws Exception {
 		articleDaoImpl.update(article);

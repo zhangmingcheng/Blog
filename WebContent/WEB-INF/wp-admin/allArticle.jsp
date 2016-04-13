@@ -10,6 +10,33 @@
     <%String path = request.getContextPath(); %>
     <link href="<%=path %>/css/blog.css" rel="stylesheet" type="text/css"/>
     <link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=path %>/js/jquery.min.js"></script>
+   <script src="<%=path %>/js/bootstrap.min.js"></script>
+   <script src="<%=path %>/js/prototype.js"></script>
+   <script type="text/javascript">
+   function deleteArticle(id){
+   	 var url = '/Blog/ajax/deleteArticle.action';
+   	//将表单域的值转换成请求参数
+   	var param = 'id='+id;
+   	//创建一个Ajax.Request对象来发送请求
+   	var myAjax = new Ajax.Request(
+         	  url,{method: 'post', parameters: param, onComplete: showResponse7, asynchronous: true}    	 
+         	); 
+   }
+   	 //该方法为异步处理响应信息的函数
+       function showResponse7(request){
+    	   var temp = request.responseText.evalJSON();
+    	   var strs =  '<tr style="height:30px">'+
+           '<th>标题</th><th>作者</th><th>日期</th><th>编辑</th><th>删除</th>'+
+           '</tr>';
+           for(var n = 0;n<temp.length;n++){
+        	   strs+='<tr style="height:50px"><td>'+temp[n].title+'</td><td>'+temp[n].user.name+'</td><td>'+temp[n].postdate+'</td>'+
+        	   '<td><a href="/Blog/text/edit?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
+        	 '<td><button type="button" class="btn btn-success" onclick="deleteArticle('+temp[n].id+'">删除</button></td></tr>';
+           }          
+         $("deleteArt").innerHTML = strs;
+       }
+   </script>
   </head>
   <body>
 
@@ -43,18 +70,18 @@
 			<!-- 右半部分 -->
 			<div class="col-md-9">
 			
-                   <table class="table table-hover table-bordered">
+                   <table class="table table-hover table-bordered" id="deleteArt">
                    <tr style="height:30px">
-                       <th>标题</th><th>作者</th><th>日期</th><th></th><th></th>
-                   </tr>              
+                       <th>标题</th><th>作者</th><th>日期</th><th>编辑</th><th>删除</th>
+                   </tr>            
                     <s:iterator value="list"  id="selectNum1">                
-                        <tr style="height:60px">
+                        <tr style="height:50px">
                         <td>${selectNum1.getTitle()}</td>
                         <td>${selectNum1.getUser().getName()}</td>
                          <td>${selectNum1.getPostdate()}</td>
-                         <td><button type="button" class="btn btn-info">（一般信息）Info</button></td>
-                         <td><button type="button" class="btn btn-info">（一般信息）Info</button></td>
-                        </tr>
+                         <td><a href="/Blog/text/edit?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>
+                         <td><button type="button" class="btn btn-success" onclick="deleteArticle(${selectNum1.getId()})">删除</button></td>
+                        </tr>                      
                  </s:iterator>        
                  </table>
                  <nav>

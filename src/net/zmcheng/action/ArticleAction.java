@@ -48,6 +48,8 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     //编辑指定博文，更新博文
     public String edit2() throws Exception{
     	Article article2 = articleServiceImpl.getArticle(article.getId());
+        HttpSession httpSession = request.getSession(false);
+      	httpSession.setAttribute("articleId", article.getId());
     	article2.setContent(article.getContent());
     	article2.setTitle(article.getTitle());
     	articleServiceImpl.update(article2);
@@ -69,7 +71,6 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     }
    //修改赞数,并得到赞数
     public String getZan()  throws Exception{
-    	System.out.println("num====");
     	 Article article2 = articleServiceImpl.getArticle(article.getId());
     	 zanCount=article2.getZanNum()+1;
     	 article2.setZanNum(article2.getZanNum()+1);

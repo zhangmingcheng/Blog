@@ -15,7 +15,7 @@
             <result>/WEB-INF/wp-admin/editArticle.jsp</result>
         </action>   
         <action name="edit2" class="net.zmcheng.action.ArticleAction"  method="edit2">
-            <result>/WEB-INF/view/showArticle.jsp</result>
+            <result>/WEB-INF/view/writerAfter.jsp</result>
         </action>   
          <action name="articles" class="net.zmcheng.action.AllArticleAction" >
             <result>/WEB-INF/wp-admin/allArticle.jsp</result>

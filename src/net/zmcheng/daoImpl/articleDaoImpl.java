@@ -22,6 +22,13 @@ public class articleDaoImpl implements articleDao {
 		List list =  query.list();
 		return list.size();
 	}
+	public int getArticleNum(int Id) throws Exception{
+		Session session = sessionFactory.getCurrentSession();		
+		Query query = session.createQuery("from Article as c where c.id < :Id");
+		query.setInteger("Id", Id);
+		List list =  query.list();
+		return list.size();
+	}
 	//分页查询数据setFirstResult(start)中索引start是从0开始的
 	public List<Article> getArticles(final int start,final int  length) throws Exception{
 		Session session = sessionFactory.getCurrentSession();		
@@ -57,7 +64,8 @@ public class articleDaoImpl implements articleDao {
 
 	@Override
 	public void delete(Article article) throws Exception {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(article);
 
 	}
 

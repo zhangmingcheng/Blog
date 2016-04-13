@@ -21,7 +21,7 @@
         </action>  
     </package>
     
-      <package name="userAjax"  namespace="/ajax" extends="json-default">     
+      <package name="Ajax"  namespace="/ajax" extends="json-default">     
         <action name="updatePsw" class="net.zmcheng.action.UpdateUserAction" method="updatePsw">
             <result name="success" type="json">
                <param name="root">result</param>
@@ -50,6 +50,11 @@
          <action name="zanCount" class="net.zmcheng.action.ArticleAction"  method="getZan">
              <result name="success" type="json">
                  <param name="root">zanCount</param>
+              </result>  
+        </action>   
+         <action name="deleteArticle" class="net.zmcheng.action.AllArticleAction"  method="delete">
+             <result name="success" type="json">
+                 <param name="root">list</param>
               </result>  
         </action>   
     </package>

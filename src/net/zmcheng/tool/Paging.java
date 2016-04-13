@@ -21,11 +21,15 @@ public class Paging {
     	return offset;
     }
     /*
-     * 计算当前页页码
+     * 根据记录数判断这个记录在哪一页
      */
-    public int countCurrentPage(){
-    	int currentpage = (currentPage==0?1:currentPage);
-    	return currentpage;
+    public int JudgePage(int num){
+          if(num<=Paging.pageSize)
+        	  this.setCurrentPage(1);
+          else if(num%Paging.pageSize==0)
+        	  this.setCurrentPage(num/Paging.pageSize);
+          else  this.setCurrentPage(num/Paging.pageSize+1);
+          return this.getCurrentPage();
 	}
     public int getTotalPage() {
   		return totalPage;
