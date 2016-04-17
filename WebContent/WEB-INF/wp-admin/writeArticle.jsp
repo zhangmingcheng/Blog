@@ -42,6 +42,9 @@ div {
 				     <tr><th> 分类：</th><th><select  class="title_input" name="category">
 							<option>----选择分类----</option>
 					</select></th></tr>
+					<tr>
+					<th>简述：</th><th><textarea class="form-control" rows="3" name="brief"></textarea></th>
+					</tr>
 					<tr><th colspan="2">
 						<textarea id="myEditor" style="height: 270px; margin: 5px 0px;" name="content" ></textarea></th></tr>
 						<tr><th>

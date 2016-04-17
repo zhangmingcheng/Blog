@@ -3,14 +3,13 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<!-- 执行动态编译 ,在开发完成之后要修改为false-->
 	<constant name="struts.devMode" value="true"></constant>
-	<!-- 支持ognl表达式访问静态方法 -->
 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
-	<!-- 配置视图编码方式为UTF-8-->
 	<constant name="struts-i18n.encoding" value="UTF-8"></constant>
    <include file="./net/zmcheng/action/articleInfo.xml"></include>
+   <include file="./net/zmcheng/action/AjaxInfo.xml"></include>
    <include file="./net/zmcheng/action/userInfo.xml"></include>
+   <include file="./net/zmcheng/action/HeadarticleInfo.xml"></include>
     <package name="transfer2"  namespace="/wp-admin"  extends="struts-default">
        
         <action name="*" class="net.zmcheng.action.transferAction">

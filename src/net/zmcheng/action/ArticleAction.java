@@ -33,9 +33,9 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     public String write() throws Exception{
     	article.setUser(this.getSessionUser());
     	article.setZanNum(0);
+    	article.setReadNum(0);
     	articleServiceImpl.write(article);
-   	    HttpSession httpSession = request.getSession(false);
-   	    httpSession.setAttribute("articleId", article.getId());
+   	    request.setAttribute("articleId", article.getId());
     	return SUCCESS;
     }
     //编辑指定博文,为指定博文传入之前存的内容
@@ -43,15 +43,16 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     	Article article2 = articleServiceImpl.getArticle(article.getId());
     	article.setContent(article2.getContent());
     	article.setTitle(article2.getTitle());
+    	article.setBrief(article2.getBrief());
     	return SUCCESS;
     }
     //编辑指定博文，更新博文
     public String edit2() throws Exception{
     	Article article2 = articleServiceImpl.getArticle(article.getId());
-        HttpSession httpSession = request.getSession(false);
-      	httpSession.setAttribute("articleId", article.getId());
+        request.setAttribute("articleId", article.getId());
     	article2.setContent(article.getContent());
     	article2.setTitle(article.getTitle());
+    	article2.setBrief(article.getBrief());
     	articleServiceImpl.update(article2);
     	return SUCCESS;
     }

@@ -10,14 +10,50 @@
     <%String path = request.getContextPath(); %>
     <link href="<%=path %>/css/blog.css" rel="stylesheet" type="text/css"/>
     <link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=path %>/js/jquery.min.js"></script>
+   <script src="<%=path %>/js/bootstrap.min.js"></script>
+   <script src="<%=path %>/js/prototype.js"></script>
   </head>
   <body>
- <%@ include file="head.jsp"%>
-	
-    <div class="container" >
-        <div class="row">
-             <div class="col-md-7" style="margin-left: 3%; margin-top:1%;background-color: red; height: 550px">
-                    
+
+    <%@ include file="head.jsp" %> 
+      <div class="container">
+		<div class="row">
+			<!-- 左半部分 -->
+			<div class="col-md-3">
+				<div style="height: 260px; margin-top: 10px;">
+					<s:if test="%{#session.user.photo==null}">
+						<img class="img-circle" title="用户头像"
+							style="height: 240px; width: 90%;"
+							src="<%=path%>/images/default.jpg">
+					</s:if>
+					<s:else>
+						<!-- 浏览器解析html时，只要发现存在一个img标签，便会向服务器要图片，所以要解决缓存 -->
+						<img class="img-circle" title="用户头像"
+							style="height: 240px; width: 90%;"
+							src="<%=path%>/images/${user.name}/${user.photo}?temp=<%=Math.random()%>">
+					</s:else>
+				</div>
+				<div>
+				  <table class="table table-hover">			
+					<tr class="success"><th style="width: 80px"><a style="margin-left: 20%; margin-buttom: 10px;"
+						href="/Blog/wp-admin/userInformation">个人主页</a></th></tr><tr class="success"><th> <a
+						style="margin-left: 20%; margin-buttom: 10px;" href="/Blog/wp-admin/writeArticle">写文章</a></th></tr><tr class="success"><th>
+					<a style="margin-left: 20%; margin-buttom: 10px;" href="#">留言板</a></th></tr>
+					</table>
+				</div>
+			</div>
+			<!-- 右半部分 -->
+			<div class="col-md-9">
+			<h4>添加友链</h4>
+			<form name="FORM" id="FORM">
+			<table  class="table table-hover table-bordered">
+			    <tr class="success"><th>友链名称:</th><th><input type="text" name="name" id="name"/></th></tr>
+			    <tr class="success"><th>友链URL:</th><th><input type="text" name="name" id="name"/></th></tr>
+			    <tr class="success"><th></th><th><input type="button" value="设置" class="btn btn-primary" onClick="AddUrl();"/></th></tr>
+			</table>
+			</form>
+			<!-- 
                    <table class="table table-hover table-bordered" id="deleteArt">
                    <tr style="height:30px">
                        <th>标题</th><th>作者</th><th>日期</th><th>编辑</th><th>删除</th>
@@ -47,18 +83,16 @@
                               <li><a href="#">Next</a></li>
                            </s:else>
                           </ul>
-                </nav>              
+                </nav>              --> 
                     
-             </div>
-             <div class="col-md-4" style="margin-left:5%; margin-top:1%;background-color: black; height: 550px">
-             
-             </div>
-        </div>
-    </div>
+		</div>
+	   </div>
+	 </div>
 
-    <div class="blog-footer" style="height: 40px">
-      Blog template built by <a href="https://www.zmcheng.net">@zmcheng</a>.
-    </div>
-
+    <footer class="blog-footer">
+        <p>
+		      Blog template built by <a href="https://www.zmcheng.net">@zmcheng</a>.
+	    </p>
+    </footer>
   </body>
 </html>

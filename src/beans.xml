@@ -27,6 +27,9 @@
                <value>net.zmcheng.model.Province</value>
                <value>net.zmcheng.model.City</value>
                <value>net.zmcheng.model.Article</value>
+               <value>net.zmcheng.model.Link</value>
+               <value>net.zmcheng.model.Message</value>
+               <value>net.zmcheng.model.MessageTip</value>
                </list>
            </property>
            <property name="hibernateProperties">

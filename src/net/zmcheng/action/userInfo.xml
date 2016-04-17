@@ -21,43 +21,4 @@
         </action>  
     </package>
     
-      <package name="Ajax"  namespace="/ajax" extends="json-default">     
-        <action name="updatePsw" class="net.zmcheng.action.UpdateUserAction" method="updatePsw">
-            <result name="success" type="json">
-               <param name="root">result</param>
-            </result> 
-        </action>          
-         <action name="updateEmail" class="net.zmcheng.action.UpdateUserAction" method="updateEmail">
-            <result name="success" type="json">
-               <param name="root">result</param>
-            </result>    
-        </action>    
-         <action name="updatePhone" class="net.zmcheng.action.UpdateUserAction" method="updatePhone">
-            <result name="success" type="json">
-               <param name="root">result</param>
-            </result>    
-        </action>     
-         <action name="updateHome" class="net.zmcheng.action.UpdateUserAction" method="updateHome">
-            <result name="success" type="json">
-               <param name="root">result</param>
-            </result>    
-        </action>         
-        <action name="getCitys" class="net.zmcheng.action.UpdateUserAction" method="GetCitys">
-            <result name="success" type="json">
-               <param name="root">citys</param>
-            </result>    
-        </action>    
-         <action name="zanCount" class="net.zmcheng.action.ArticleAction"  method="getZan">
-             <result name="success" type="json">
-                 <param name="root">zanCount</param>
-              </result>  
-        </action>   
-         <action name="deleteArticle" class="net.zmcheng.action.AllArticleAction"  method="delete">
-             <result name="success" type="json">
-                 <param name="root">list</param>
-              </result>  
-        </action>   
-    </package>
- 
-   
 </struts>

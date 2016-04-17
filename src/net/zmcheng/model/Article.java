@@ -22,6 +22,7 @@ public class Article implements java.io.Serializable{
      private Date postdate = new Date();
      private String content;
      private int zanNum;
+     private String brief;
      @Id
      @GeneratedValue
 	public Integer getId() {
@@ -79,6 +80,14 @@ public class Article implements java.io.Serializable{
 
 	public void setZanNum(int zanNum) {
 		this.zanNum = zanNum;
+	}
+  @Column(name="brief")
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
 	}
 
 }

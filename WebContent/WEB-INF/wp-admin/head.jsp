@@ -6,10 +6,10 @@
 			<div class="col-md-10">
 				<ul class="nav nav-pills">
 					<li><a class="blog-nav-item active" href="/Blog/wp-admin/userInformation">个人主页</a></li>
-				    <li><a class="blog-nav-item" href="/Blog/text/articles">所有文章</a></li>
-					<li><a class="blog-nav-item" href="/Blog/wp-admin/writeArticle">写文章</a></li>			
+				    <li><a class="blog-nav-item" href="/Blog/text/articles">文章管理</a></li>
+					<li><a class="blog-nav-item" href="/Blog/wp-admin/writeArticle">写文章</a></li>		
+					<li><a class="blog-nav-item" href="/Blog/wp-admin/friendUrl">友情链接</a></li>	
 					<li><a class="blog-nav-item" href="#">文件下载</a></li>
-					<li><a class="blog-nav-item" href="#">友情链接</a></li>
 					<li><a class="blog-nav-item" href="/Blog/wp-admin/userInformation">个人主页</a></li>
 				</ul>
 			</div>

@@ -40,9 +40,7 @@
 				<div>
 				  <table class="table table-hover">			
 					<tr class="success"><th style="width: 80px"><a style="margin-left: 20%; margin-buttom: 10px;"
-						href="/Blog/wp-admin/uploadPhoto">更改我的头像</a></th></tr><tr class="success"><th> <a
-						style="margin-left: 20%; margin-buttom: 10px;" href="#">编辑我的资料</a></th></tr><tr class="success"><th>
-					<a style="margin-left: 20%; margin-buttom: 10px;" href="#">更改我的头像</a></th></tr>
+						href="/Blog/wp-admin/uploadPhoto">更改我的头像</a></th></tr>
 					</table>
 				</div>
 
