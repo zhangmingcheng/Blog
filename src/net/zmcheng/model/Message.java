@@ -17,10 +17,10 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 public class Message  implements java.io.Serializable{
      private Integer id;
-     private User user;
      private String sender;
      private String content;
-     private Date time =new Date();
+     private int status;
+     private String time;
     @Id
     @GeneratedValue
 	public Integer getId() {
@@ -30,15 +30,7 @@ public class Message  implements java.io.Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@ManyToOne(cascade ={CascadeType.ALL},optional=false,fetch = FetchType.LAZY,targetEntity = Message.class)
-	 @JoinColumn(name="getId")
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	@Column(name="sender")
 	public String getSender() {
 		return sender;
@@ -48,11 +40,11 @@ public class Message  implements java.io.Serializable{
 		this.sender = sender;
 	}
 	@Column(name="time")
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	@Column(name="content")
@@ -62,6 +54,14 @@ public class Message  implements java.io.Serializable{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+    @Column(name="status")
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
      
 }

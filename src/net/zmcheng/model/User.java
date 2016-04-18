@@ -1,5 +1,6 @@
 package net.zmcheng.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import net.zmcheng.tool.MyDate;
 @Entity
 @Table(name="User")
 @SuppressWarnings("serial")
@@ -20,7 +23,7 @@ public class User implements java.io.Serializable{
      private String password;
      private String photo;
      private String phone;
-     private Date createtime = new Date();
+     private String createtime;
      private String sex;
      private String email;
      private Province province;
@@ -56,11 +59,11 @@ public class User implements java.io.Serializable{
 		this.phone = phone;
 	}
 	@Column(name="createtime")
-	public Date getCreatetime() {
+	public String getCreatetime() {
 		return createtime;
 	}
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
+	public void setCreatetime(String createtime) {
+		this.createtime =createtime;
 	}
 	@Column(name="sex")
 	public String getSex() {

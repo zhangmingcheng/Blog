@@ -11,37 +11,35 @@
     <link href="<%=path %>/css/blog.css" rel="stylesheet" type="text/css"/>
     <link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   </head>
-  <body>
+  <body style="background-color: #E0E0E0">
  <%@ include file="head.jsp"%>
 	
     <div class="container" >
         <div class="row">
-             <div class="col-md-7" style="margin-left: 3%; margin-top:1%;background-color: red; height: 550px">
-                    
-                   <table class="table table-hover table-bordered" id="deleteArt">
-                   <tr style="height:30px">
-                       <th>标题</th><th>作者</th><th>日期</th><th>编辑</th><th>删除</th>
-                   </tr>            
+             <div class="col-md-7" style="margin-left: 3%">
+                   
                     <s:iterator value="list"  id="selectNum1">                
-                        <tr style="height:50px">
-                        <td><a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a></td>
-                        <td>${selectNum1.getUser().getName()}</td>
-                         <td>${selectNum1.getPostdate()}</td>
-                         <td><a href="/Blog/text/edit?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>
-                         <td><button type="button" class="btn btn-success" onclick="deleteArticle(${selectNum1.getId()})">删除</button></td>
-                        </tr>                      
+                        <div style="background-color: #FFFFFF;magin-top:10px">
+                              <div style="margin-left:5%;padding-bottom: 2%">
+                                <h5>&nbsp;</h5>
+                                 <h4 style="font-weight: bold;color:004B97"><a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a></h4>
+                                 <h5 style="color:#6C6C6C">${selectNum1.getUser().getName()}&nbsp;发布于&nbsp;${selectNum1.getPostdate()}&nbsp;&nbsp;阅读(${selectNum1.getReadNum()})&nbsp;&nbsp;评论(0)&nbsp;&nbsp;</h5>
+                                 <p>${selectNum1.getBrief() }</p>
+                                <h5 style="font-weight: bold;"><a href="/Blog/head/open?id=${selectNum1.getId()}">【查看详情】</a></h5>                
+                             </div>
+                        </div>
                  </s:iterator>        
-                 </table>
+             
                  <nav>
                          <ul class="pager">
                          <s:if test="currentPage ==1">  
                             <li><a href="#">Previous</a></li>
                           </s:if>
                           <s:else>
-                             <li><a href="/Blog/text/articles?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
+                             <li><a href="/Blog/head/articles?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
                           </s:else>
                            <s:if test="currentPage !=totalPage">  
-                              <li> <a href="/Blog/text/articles?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
+                              <li> <a href="/Blog/head/articles?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
                            </s:if>
                            <s:else>
                               <li><a href="#">Next</a></li>
@@ -50,7 +48,7 @@
                 </nav>              
                     
              </div>
-             <div class="col-md-4" style="margin-left:5%; margin-top:1%;background-color: black; height: 550px">
+             <div class="col-md-4" style="margin-left:5%;background-color: black; height: 550px">
              
              </div>
         </div>

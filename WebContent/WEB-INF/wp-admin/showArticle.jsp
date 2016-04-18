@@ -26,7 +26,7 @@
 			<div class="col-md-9">
 			   <div style="height:40px;width: 100%;text-align:center;">
 			       <h3>${title}</h3>
-			       <h5>${user.getName()}&nbsp;&nbsp;阅读（${readNum}）</h5>
+			       <h5>${user.getName()}&nbsp;&nbsp;阅读（${readNum}）&nbsp;&nbsp;${postdate}</h5>
 			   </div>
 			   <HR size=2><!-- 一条线 -->
 			   <div>

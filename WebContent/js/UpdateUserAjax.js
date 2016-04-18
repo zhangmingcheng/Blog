@@ -74,3 +74,4 @@
               function showResponse6(request){
                 $("ZAN").innerHTML ='赞（'+request.responseText.evalJSON()+'）';
               }  
+           

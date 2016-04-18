@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import net.zmcheng.model.Article;
 import net.zmcheng.model.User;
 import net.zmcheng.service.articleService;
+import net.zmcheng.tool.MyDate;
 
 @SuppressWarnings("serial")
 public class ArticleAction extends ActionSupport implements ModelDriven<Article> ,Serializable,ServletRequestAware{
@@ -34,6 +35,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     	article.setUser(this.getSessionUser());
     	article.setZanNum(0);
     	article.setReadNum(0);
+    	article.setPostdate(MyDate.getTime());
     	articleServiceImpl.write(article);
    	    request.setAttribute("articleId", article.getId());
     	return SUCCESS;

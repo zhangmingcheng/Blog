@@ -1,7 +1,6 @@
 package net.zmcheng.action;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +11,10 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import net.zmcheng.model.City;
 import net.zmcheng.model.Province;
 import net.zmcheng.model.User;
 import net.zmcheng.service.userService;
+import net.zmcheng.tool.MyDate;
 
 @SuppressWarnings("serial")
 public class LoginRegisterAction extends ActionSupport implements ModelDriven<User> ,Serializable,ServletRequestAware {
@@ -69,6 +68,7 @@ public class LoginRegisterAction extends ActionSupport implements ModelDriven<Us
 		 request.setAttribute("usererror", "注册失败，请重新注册");
 		 return INPUT;
 	 }
+	 user.setCreatetime(MyDate.getTime());
 	  Set<Province> province = userServiceImpl.UserProvince();
      boolean flag = false;
 	 flag = userServiceImpl.UserRegister(user);

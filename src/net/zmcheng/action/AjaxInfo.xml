@@ -39,5 +39,10 @@
                  <param name="root">list</param>
               </result>  
         </action>   
+         <action name="addMessage" class="net.zmcheng.action.MessageAction"  method="add">
+             <result name="success" type="json">
+                 <param name="root">list</param>
+              </result>  
+        </action>   
     </package>
     </struts>

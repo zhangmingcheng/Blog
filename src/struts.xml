@@ -9,7 +9,7 @@
    <include file="./net/zmcheng/action/articleInfo.xml"></include>
    <include file="./net/zmcheng/action/AjaxInfo.xml"></include>
    <include file="./net/zmcheng/action/userInfo.xml"></include>
-   <include file="./net/zmcheng/action/HeadarticleInfo.xml"></include>
+   <include file="./net/zmcheng/action/HeadInfo.xml"></include>
     <package name="transfer2"  namespace="/wp-admin"  extends="struts-default">
        
         <action name="*" class="net.zmcheng.action.transferAction">

@@ -29,7 +29,6 @@
                <value>net.zmcheng.model.Article</value>
                <value>net.zmcheng.model.Link</value>
                <value>net.zmcheng.model.Message</value>
-               <value>net.zmcheng.model.MessageTip</value>
                </list>
            </property>
            <property name="hibernateProperties">
@@ -55,6 +54,7 @@
               <tx:method name="update*" propagation="REQUIRED"/>
               <tx:method name="select*" propagation="REQUIRED"/>
               <tx:method name="delete*" propagation="REQUIRED"/>
+               <tx:method name="add*" propagation="REQUIRED"/>
          </tx:attributes>
      </tx:advice>
   

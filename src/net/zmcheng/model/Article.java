@@ -1,7 +1,5 @@
 package net.zmcheng.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +17,7 @@ public class Article implements java.io.Serializable{
 	 private User user;
      private String title;
      private int readNum;
-     private Date postdate = new Date();
+     private String postdate;
      private String content;
      private int zanNum;
      private String brief;
@@ -58,11 +56,11 @@ public class Article implements java.io.Serializable{
 		this.readNum = readNum;
 	}
 	@Column(name="postdate")
-	public Date getPostdate() {
+	public String  getPostdate() {
 		return postdate;
 	}
 
-	public void setPostdate(Date postdate) {
+	public void setPostdate(String  postdate) {
 		this.postdate = postdate;
 	}
 	@Column(name="content")

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <package name="HeadarticleInformation"  namespace="/head"  extends="struts-default">
+    
+         <action name="articles" class="net.zmcheng.action.AllArticleAction" >
+            <result>/WEB-INF/view/index.jsp</result>
+         </action>  
+         <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
+            <result>/WEB-INF/view/showArticle.jsp</result>
+         </action>   
+         <action name="messages" class="net.zmcheng.action.MessageAction" >
+            <result>/WEB-INF/view/message.jsp</result>
+         </action>
+          
+ </package>
+</struts>
