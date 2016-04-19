@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import net.zmcheng.model.Message;
-import net.zmcheng.model.ReplyMessage;
+import net.zmcheng.model.Messages;
 import net.zmcheng.service.messageService;
 import net.zmcheng.tool.MyDate;
 import net.zmcheng.tool.Paging;
@@ -15,7 +15,7 @@ import net.zmcheng.tool.Paging;
 @SuppressWarnings("serial")
 public class MessageAction extends ActionSupport implements Serializable,ModelDriven<Paging>{
 
-	private List<Message> list;// 要返回的某一页的记录
+	private List<Messages> list;// 要返回的某一页的记录
 	private int messageId;
 	private String content;
 	private String time;
@@ -27,20 +27,16 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	}
 	//添加留言
     public String add() throws Exception{
-    	Message message = new Message();
-    	message.setContent(this.getContent());
-    	message.setTime(MyDate.getTime());
-    	message.setSender(this.getSender());
+    	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime());
     	messageServiceImpl.add(message);
     	this.getLists();
     	return SUCCESS;
     }
-    //添加留言回复
+    //回复留言
     public String addReply() throws Exception{
-       Message message  = messageServiceImpl.getMessageById(messageId);
-       ReplyMessage rm = new ReplyMessage(message,this.getTime(),this.getSender(),this.getContent());   
-       System.out.println("rm");
-       messageServiceImpl.addReply(rm);
+    	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime(),this.getMessageId());
+    	messageServiceImpl.add(message);
+    	this.getLists();
     	return SUCCESS;
     }
     //得到指定页数的数据
@@ -56,11 +52,11 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 		 this.getLists();
 		 return SUCCESS;
 	 }
-	public List<Message> getList() {
+	public List<Messages> getList() {
 		return list;
 	}
 
-	public void setList(List<Message> list) {
+	public void setList(List<Messages> list) {
 		this.list = list;
 	}
 

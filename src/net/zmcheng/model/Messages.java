@@ -1,37 +1,25 @@
 package net.zmcheng.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name="Message")
 @SuppressWarnings("serial")
-public class Message  implements java.io.Serializable{
+public class Messages  implements java.io.Serializable{
      private Integer id;
-     private Integer replyId;
      private String sender;
      private String content;
      private int status;
      private String time;
-     public Message(){
+     private List<Messages>messages = new ArrayList<Messages>();
+     public Messages(){
     	 
      }
-     public Message(String sender,String content,String time){
+     public Messages(Integer id,String sender,String content,String time){
+    	 this.id = id;
        	 this.sender = sender;
     	 this.content = content;
     	 this.time = time;
      }
-     public Message(String sender,String content,String time,int replyId){
-       	 this.sender = sender;
-    	 this.content = content;
-    	 this.time = time;
-    	 this.replyId = replyId;
-     }
-    @Id
-    @GeneratedValue
 	public Integer getId() {
 		return id;
 	}
@@ -40,7 +28,6 @@ public class Message  implements java.io.Serializable{
 		this.id = id;
 	}
 	
-	@Column(name="sender")
 	public String getSender() {
 		return sender;
 	}
@@ -48,7 +35,6 @@ public class Message  implements java.io.Serializable{
 	public void setSender(String sender) {
 		this.sender = sender;
 	}
-	@Column(name="time")
 	public String getTime() {
 		return time;
 	}
@@ -56,7 +42,6 @@ public class Message  implements java.io.Serializable{
 	public void setTime(String time) {
 		this.time = time;
 	}
-	@Column(name="content")
 	public String getContent() {
 		return content;
 	}
@@ -64,7 +49,6 @@ public class Message  implements java.io.Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-    @Column(name="status")
 	public int getStatus() {
 		return status;
 	}
@@ -72,11 +56,11 @@ public class Message  implements java.io.Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	@Column(name="replyId")
-	public Integer getReplyId() {
-		return replyId;
+	public List<Messages> getMessages() {
+		return messages;
 	}
-	public void setReplyId(Integer replyId) {
-		this.replyId = replyId;
-	}     
+	public void setMessages(List<Messages> messages) {
+		this.messages = messages;
+	}
+     
 }

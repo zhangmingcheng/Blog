@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import net.zmcheng.dao.messageDao;
 import net.zmcheng.model.Message;
-import net.zmcheng.model.ReplyMessage;
+import net.zmcheng.model.Messages;
 import net.zmcheng.service.messageService;
 @Component
 public class messageServiceImpl implements messageService {
@@ -16,10 +16,6 @@ public class messageServiceImpl implements messageService {
 	public void add(Message message) throws Exception {
 		messageDaoImpl.add(message);
 	}
-	 public void addReply(ReplyMessage rm) throws Exception{
-		  System.out.println("hhhhh");
-		 messageDaoImpl.addReply(rm);
-	 }
 	 public Message getMessageById(int messageId) throws Exception{
 		 return messageDaoImpl. getMessageById(messageId);
 	 }
@@ -34,7 +30,7 @@ public class messageServiceImpl implements messageService {
 		// TODO Auto-generated method stub
 
 	}
-	public List<Message> select(final int start,final int  length) throws Exception{
+	public List<Messages> select(final int start,final int  length) throws Exception{
 		return  messageDaoImpl.getAllMessage(start,length);
 	}
 

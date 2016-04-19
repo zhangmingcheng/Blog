@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import net.zmcheng.dao.messageDao;
 import net.zmcheng.model.Message;
-import net.zmcheng.model.ReplyMessage;
+import net.zmcheng.model.Messages;
 @Component
 public class messageDaoImpl implements messageDao {
 	private  SessionFactory sessionFactory;
@@ -20,10 +20,6 @@ public class messageDaoImpl implements messageDao {
 		  Session session = sessionFactory.getCurrentSession();
 		  session.save(message);
 	}
-	 public void addReply(ReplyMessage rm) throws Exception{
-		  Session session = sessionFactory.getCurrentSession();
-		  session.save(rm);
-	  }
 	 public Message getMessageById(int messageId) throws Exception{
 			Session session = sessionFactory.getCurrentSession();		
 			return (Message)session.get(Message.class, messageId);
@@ -47,14 +43,31 @@ public class messageDaoImpl implements messageDao {
 	}
 
 	@Override
-	public List<Message>getAllMessage(final int start,final int  length) throws Exception{
+	public List<Messages>getAllMessage(final int start,final int  length) throws Exception{
 		Session session = sessionFactory.getCurrentSession();		
-		List<Message> temp = new  ArrayList<Message>();
+		List<Messages> messages = new  ArrayList<Messages>();
 		Query query = session.createQuery("from Message as  u order by u.id desc");
 		query.setFirstResult(start);
 		query.setMaxResults(length);
-		temp = query.list();
-		return temp;
+		List<Message> result = query.list();
+		for(Message temp:result){
+			System.out.println("sender="+temp.getSender());
+			Messages tempMess = new Messages(temp.getId(),temp.getSender(),temp.getContent(),temp.getTime());
+			if(temp.getReplyId()!=null){
+			Query query2 = session.createQuery("from Message as u where u.replyId=:tempId or u.id=:tempId");
+			query2.setInteger("tempId", temp.getReplyId());
+			List<Message> result2 = query2.list();
+			List<Messages> list2 = new ArrayList<Messages>();			
+			for(Message temp2:result2){
+				System.out.println("sender=="+temp2.getSender());
+				Messages tempMess2 = new Messages(temp2.getId(),temp2.getSender(),temp2.getContent(),temp2.getTime());
+				list2.add(tempMess2);
+			}
+			tempMess.setMessages(list2);
+			}
+		    messages.add(tempMess);
+		}
+		return messages;
 	}
 
 	public SessionFactory getSessionFactory() {

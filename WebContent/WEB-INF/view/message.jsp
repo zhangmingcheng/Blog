@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+ <%@ page import="java.util.*" %>
+  <%@ page import="net.zmcheng.model.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -71,18 +73,27 @@
                      <hr color="black">    
                  <div id="AllMessage">      
                     <s:iterator value="list"  id="selectNum1">                  
-                        <div style="float: none;height:50px">     
+                        <div style="float: none">     
                              <div style="float:left">                     
                                <img class="img-circle" title="用户头像" style="height: 50px; width: 50px;"src="<%=path%>/images/default.jpg">
-                             </div> 
-                             <div style="float:left;margin-left:3%">
-                             <table>
-                             <tr ><th style="font-size: 13px;color:blue"> ${selectNum1.getSender()}</th></tr>
-                             <tr><th style="font-size: 13px"> &nbsp;&nbsp;${selectNum1.getContent()}</th></tr>
-                             <tr><th style="font-size: 12px"> ${selectNum1.getTime()}&nbsp;&nbsp;<a href="#" onclick="showPopup('popupcontent${selectNum1.getId()}');" >回复</a></th></tr>                            
-                             </table>                 
+                             </div>                                                                                                
+                             <div style="margin-left:3%">
+	                             <table>
+	                             <tr ><th style="font-size: 13px;color:blue"> ${selectNum1.getSender()}</th></tr>
+	                             <!-- -->                        
+	                            <s:iterator value="#selectNum1.getMessages()"  id="selectNum2">                                                                
+	                              
+	                                <tr><th style="font-size: 13px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9393FF">${selectNum2.getSender()}</span></th></tr>                                                                       
+	                                <tr><th >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${selectNum2.getContent()}&nbsp;&nbsp;&nbsp;${selectNum2.getTime()}&nbsp;&nbsp;<a href="#" onclick="showPopup('popupcontent${selectNum1.getId()}');" >回复</a>&nbsp;&nbsp;</th></tr>                            
+	                           
+	                           </s:iterator>       
+	                           <!-- -->
+	                             <tr><th style="font-size: 13px"> &nbsp;&nbsp;${selectNum1.getContent()}</th></tr>
+	                            <tr> <th style="font-size: 12px"> ${selectNum1.getTime()}&nbsp;&nbsp;<a href="#" onclick="showPopup('popupcontent${selectNum1.getId()}');" >回复</a></th></tr>
+	                             </table>                 
                                </div>                  
-                        </div>                                  
+                        </div>            
+                                                 
                         <div id="popupcontent${selectNum1.getId()}" style="display: none">
                          <form method="post" name="message${selectNum1.getId()}" id="message${selectNum1.getId()}">
                             <table style="width:100%">
@@ -93,8 +104,9 @@
                               <tr><th><button type="button" class="btn btn-success" onClick="replyMessage('${selectNum1.getId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
                           </table>
                         </form>             
-                       </div>                             
-                      <hr color="black">
+                       </div>    
+                                                
+                       <hr color="black">  
                  </s:iterator>                
                  </div>                       
                  <nav>
