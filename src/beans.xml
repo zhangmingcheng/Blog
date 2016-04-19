@@ -29,6 +29,7 @@
                <value>net.zmcheng.model.Article</value>
                <value>net.zmcheng.model.Link</value>
                <value>net.zmcheng.model.Message</value>
+                <value>net.zmcheng.model.ReplyMessage</value>
                </list>
            </property>
            <property name="hibernateProperties">

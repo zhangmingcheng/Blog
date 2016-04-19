@@ -44,5 +44,11 @@
                  <param name="root">list</param>
               </result>  
         </action>   
+        <action name="addReplyMessage" class="net.zmcheng.action.MessageAction"  method="addReply">
+             <result name="success" type="json">
+                 <param name="root">list</param>
+              </result>  
+        </action>   
+       
     </package>
     </struts>

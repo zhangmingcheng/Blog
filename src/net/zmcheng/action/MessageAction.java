@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import net.zmcheng.model.Message;
+import net.zmcheng.model.ReplyMessage;
 import net.zmcheng.service.messageService;
 import net.zmcheng.tool.MyDate;
 import net.zmcheng.tool.Paging;
@@ -15,6 +16,7 @@ import net.zmcheng.tool.Paging;
 public class MessageAction extends ActionSupport implements Serializable,ModelDriven<Paging>{
 
 	private List<Message> list;// 要返回的某一页的记录
+	private int messageId;
 	private String content;
 	private String time;
 	private String sender;
@@ -23,6 +25,7 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	public Paging getModel(){
 		return paging;
 	}
+	//添加留言
     public String add() throws Exception{
     	Message message = new Message();
     	message.setContent(this.getContent());
@@ -30,6 +33,14 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
     	message.setSender(this.getSender());
     	messageServiceImpl.add(message);
     	this.getLists();
+    	return SUCCESS;
+    }
+    //添加留言回复
+    public String addReply() throws Exception{
+       Message message  = messageServiceImpl.getMessageById(messageId);
+       ReplyMessage rm = new ReplyMessage(message,this.getTime(),this.getSender(),this.getContent());   
+       System.out.println("rm");
+       messageServiceImpl.addReply(rm);
     	return SUCCESS;
     }
     //得到指定页数的数据
@@ -81,5 +92,11 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	}
 	public void setMessageServiceImpl(messageService messageServiceImpl) {
 		this.messageServiceImpl = messageServiceImpl;
+	}
+	public int getMessageId() {
+		return messageId;
+	}
+	public void setMessageId(int messageId) {
+		this.messageId = messageId;
 	}
 }

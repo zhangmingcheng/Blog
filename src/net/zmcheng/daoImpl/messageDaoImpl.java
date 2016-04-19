@@ -11,8 +11,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import net.zmcheng.dao.messageDao;
-import net.zmcheng.model.Article;
 import net.zmcheng.model.Message;
+import net.zmcheng.model.ReplyMessage;
 @Component
 public class messageDaoImpl implements messageDao {
 	private  SessionFactory sessionFactory;
@@ -20,6 +20,14 @@ public class messageDaoImpl implements messageDao {
 		  Session session = sessionFactory.getCurrentSession();
 		  session.save(message);
 	}
+	 public void addReply(ReplyMessage rm) throws Exception{
+		  Session session = sessionFactory.getCurrentSession();
+		  session.save(rm);
+	  }
+	 public Message getMessageById(int messageId) throws Exception{
+			Session session = sessionFactory.getCurrentSession();		
+			return (Message)session.get(Message.class, messageId);
+	 }
 	public int getAllMessageNum() throws Exception{
 		Session session = sessionFactory.getCurrentSession();		
 		Query query = session.createQuery("from Message");

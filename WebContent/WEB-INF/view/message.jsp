@@ -16,20 +16,13 @@
    <script src="<%=path %>/js/bootstrap.min.js"></script>
    <script src="<%=path %>/js/prototype.js"></script>
    <script type="text/javascript">
-   var baseText = null; 
    function showPopup(IdNum){ 
    var popUp = document.getElementById(IdNum); 
-   if (baseText == null) baseText = popUp.innerHTML; 
    popUp.style.display="block";
    } 
-   function hidePopup(IdNum){ 
-	   var popUp = document.getElementById(IdNum); 
-	   popUp.style.visibility = "hidden"; 
-	   } 
-   
    
    function addMessage(){
-   	 var url = '/Blog/ajax/addMessage.action';
+   	var url = '/Blog/ajax/addMessage.action';
  	var param = Form.serialize('message');
         var myAjax = new Ajax.Request(
             	  url,{method: 'post', parameters: param, onComplete: addMess, asynchronous: true}    	 
@@ -39,6 +32,23 @@
           var temp = request.responseText.evalJSON();
             
         }  
+        
+        function replyMessage(IdNum,page){
+         	var url = '/Blog/ajax/addReplyMessage.action';
+         	var param = Form.serialize('message'+IdNum);
+         	param+='&currentPage=';
+         	param+=page;
+         	param+='&messageId=';
+         	param+=IdNum;
+         	alert(param);
+             var myAjax = new Ajax.Request(
+                     url,{method: 'post', parameters: param, onComplete: addReplyMess, asynchronous: true}    	 
+                  ); 
+        }
+        function addReplyMess(request){
+            var temp = request.responseText.evalJSON();
+       
+         }  
    </script>
   </head>
   <body>
@@ -74,13 +84,13 @@
                                </div>                  
                         </div>                                  
                         <div id="popupcontent${selectNum1.getId()}" style="display: none">
-                         <form method="post" name="message${selectNum1.getId()}">
+                         <form method="post" name="message${selectNum1.getId()}" id="message${selectNum1.getId()}">
                             <table style="width:100%">
                                <tr><th><textarea  placeholder="说点什么吧..." class="form-control" rows="2" name="content"></textarea></th></tr>        
                                <tr><th><br/></th></tr>
                                <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
                                <tr><th><br/></th></tr>
-                              <tr><th><button type="button" class="btn btn-success" onClick="addMessage()">回复</button></th></tr>
+                              <tr><th><button type="button" class="btn btn-success" onClick="replyMessage('${selectNum1.getId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
                           </table>
                         </form>             
                        </div>                             

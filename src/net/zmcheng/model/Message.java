@@ -1,6 +1,7 @@
 package net.zmcheng.model;
 
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,7 @@ public class Message  implements java.io.Serializable{
      private String content;
      private int status;
      private String time;
+     private Set<ReplyMessage> replyMessages = new HashSet<ReplyMessage>();
     @Id
     @GeneratedValue
 	public Integer getId() {
@@ -63,5 +65,15 @@ public class Message  implements java.io.Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	 @OneToMany(targetEntity=ReplyMessage.class,cascade={CascadeType.REMOVE},fetch = FetchType.EAGER)   
+	 @JoinColumn(name="messageId",updatable=false)
+	public Set<ReplyMessage> getReplyMessages() {
+		return replyMessages;
+	}
+
+	public void setReplyMessages(Set<ReplyMessage> replyMessages) {
+		this.replyMessages = replyMessages;
+	}
+	
      
 }
