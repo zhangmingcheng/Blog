@@ -51,16 +51,15 @@ public class messageDaoImpl implements messageDao {
 		query.setMaxResults(length);
 		List<Message> result = query.list();
 		for(Message temp:result){
-			System.out.println("sender="+temp.getSender());
 			Messages tempMess = new Messages(temp.getId(),temp.getSender(),temp.getContent(),temp.getTime());
 			if(temp.getReplyId()!=null){
-			Query query2 = session.createQuery("from Message as u where u.replyId=:tempId or u.id=:tempId");
+			Query query2 = session.createQuery("from Message as u where (u.replyId=:tempId or u.id=:tempId) and u.id<=:zanId");
 			query2.setInteger("tempId", temp.getReplyId());
+			query2.setInteger("zanId", temp.getId());
 			List<Message> result2 = query2.list();
 			List<Messages> list2 = new ArrayList<Messages>();			
-			for(Message temp2:result2){
-				System.out.println("sender=="+temp2.getSender());
-				Messages tempMess2 = new Messages(temp2.getId(),temp2.getSender(),temp2.getContent(),temp2.getTime());
+			for(int i=0;i<result2.size()-1;i++){
+				Messages tempMess2 = new Messages(result2.get(i).getId(),result2.get(i).getSender(),result2.get(i).getContent(),result2.get(i).getTime());
 				list2.add(tempMess2);
 			}
 			tempMess.setMessages(list2);
