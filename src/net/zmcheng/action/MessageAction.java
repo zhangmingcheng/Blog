@@ -27,7 +27,7 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	}
 	//添加留言
     public String add() throws Exception{
-    	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime());
+    	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime());   	
     	messageServiceImpl.add(message);
     	this.getLists();
     	return SUCCESS;

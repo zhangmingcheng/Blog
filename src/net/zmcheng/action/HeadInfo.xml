@@ -14,6 +14,11 @@
          <action name="messages" class="net.zmcheng.action.MessageAction" >
             <result>/WEB-INF/view/message.jsp</result>
          </action>
-          
+          <action name="addMessage" class="net.zmcheng.action.MessageAction"  method="add">
+                <result>/WEB-INF/view/message.jsp</result>
+        </action>      
+        <action name="addReplyMessage" class="net.zmcheng.action.MessageAction"  method="addReply">
+             <result>/WEB-INF/view/message.jsp</result>
+        </action>      
  </package>
 </struts>
