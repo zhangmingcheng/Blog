@@ -1,8 +1,5 @@
 package net.zmcheng.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import net.zmcheng.tool.MyDate;
 @Entity
 @Table(name="User")
 @SuppressWarnings("serial")

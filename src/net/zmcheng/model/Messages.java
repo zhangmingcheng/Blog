@@ -10,15 +10,17 @@ public class Messages  implements java.io.Serializable{
      private String content;
      private int status;
      private String time;
+     private Integer replyId;
      private List<Messages>messages = new ArrayList<Messages>();
      public Messages(){
     	 
      }
-     public Messages(Integer id,String sender,String content,String time){
+     public Messages(Integer id,String sender,String content,String time,Integer replyId){
     	 this.id = id;
        	 this.sender = sender;
     	 this.content = content;
     	 this.time = time;
+    	 this.replyId = replyId;
      }
 	public Integer getId() {
 		return id;
@@ -61,6 +63,12 @@ public class Messages  implements java.io.Serializable{
 	}
 	public void setMessages(List<Messages> messages) {
 		this.messages = messages;
+	}
+	public Integer getReplyId() {
+		return replyId;
+	}
+	public void setReplyId(Integer replyId) {
+		this.replyId = replyId;
 	}
      
 }

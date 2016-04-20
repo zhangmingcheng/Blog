@@ -55,9 +55,26 @@
             var temp = request.responseText.evalJSON();
        
          }  
+        function replyMessage2(IdNum,page){
+         	var url = '/Blog/ajax/addReplyMessage.action';
+         	var param = Form.serialize('message2'+IdNum);
+         	param+='&currentPage=';
+         	param+=page;
+         	param+='&messageId=';
+         	param+=IdNum;
+         	alert(param);
+             var myAjax = new Ajax.Request(
+                     url,{method: 'post', parameters: param, onComplete: addReplyMess2, asynchronous: true}    	 
+                  ); 
+        }
+        function addReplyMess2(request){
+            var temp = request.responseText.evalJSON();
+       
+         }  
    </script>
   </head>
   <body>
+  <%! int flag=0; %>
  <%@ include file="head.jsp"%>
     <div class="container" >
         <div class="row">
@@ -78,32 +95,35 @@
                  <div id="AllMessage">      
                     <s:iterator value="list"  id="selectNum1">      
                         <!-- 留言默认头像 -->            
-                         <div style="float: none">     
-                                <div style="float:left">                     
-                                <img class="img-circle" title="用户头像" style="height: 50px; width: 50px;"src="<%=path%>/images/default.jpg">
-                          </div>       
+                          <div style="float: none">     
+                                <div style="float:left;width:60px">                     
+                                     <img class="img-circle" title="用户头像" style="height: 50px; width: 50px;"src="<%=path%>/images/default.jpg">
+                               </div>       
                           <!-- 留言内容区 -->                                                                                         
-                          <div style="margin-left:3%">
-	                               <h5 style="font-size: 13px;color:blue"> ${selectNum1.getSender()}</h5>
-	                             <!-- -->                        
-	                            <s:iterator value="#selectNum1.getMessages()"  id="selectNum2">                                                                
-	                              <div>
-	                                <h5 style="font-size: 13px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9393FF">${selectNum2.getSender()}</span></h5>                                                          
-	                                <h5 style="font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${selectNum2.getContent()}&nbsp;&nbsp;&nbsp;${selectNum2.getTime()}&nbsp;&nbsp;<a href="#" onclick="showPopup2('popupcontent2${selectNum2.getId()}');" >回复</a>&nbsp;&nbsp;</h5>                     
+                           <div style="margin-left:10%">
+	                               <h5 style="font-size: 18px;color:blue"> ${selectNum1.getSender()}</h5>
+	                              <!-- -->                                        
+	                             <s:iterator value="#selectNum1.getMessages()"  id="selectNum2">                                                     
+	                               <div>
+	                               <div>                            
+	                                  <h5 style="font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#272727">${selectNum2.getSender()}：</span>
+	                                  &nbsp;&nbsp;<span style="font-size: 12px">${selectNum2.getContent()}&nbsp;&nbsp;&nbsp;${selectNum2.getTime()}
+	                                  &nbsp;&nbsp;<a href="#" onclick="showPopup2('popupcontent2${selectNum2.getId()}');" >回复</a> </span> </h5>       
+	                                </div>                                                                                                    
 	                                   <!-- 弹框 -->
 	                                   <div id="popupcontent2${selectNum2.getId()}" style="display: none">
-					                          <form method="post" name="message${selectNum2.getId()}" id="message${selectNum2.getId()}">
+					                          <form method="post" name="message2${selectNum2.getId()}" id="message2${selectNum2.getId()}">
 					                            <table style="width:100%">
 					                               <tr><th><textarea  placeholder="说点什么吧..." class="form-control" rows="2" name="content"></textarea></th></tr>        
 					                               <tr><th><br/></th></tr>
 					                               <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
 					                               <tr><th><br/></th></tr>
-					                              <tr><th><button type="button" class="btn btn-success" onClick="replyMessage('${selectNum2.getId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
+					                              <tr><th><button type="button" class="btn btn-success" onClick="replyMessage2('${selectNum2.getId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
 					                          </table>
 					                        </form>             
 					                   </div> 
-					                   </div>             
-					                   <!--  --> 
+					                </div>             
+					                <!--  --> 
 	                           </s:iterator>       
 	                           <!-- -->
 	                             <h5 style="font-size: 13px"> &nbsp;&nbsp;${selectNum1.getContent()}</h5>
@@ -113,13 +133,18 @@
                         </div>            
                                                  
                         <div id="popupcontent${selectNum1.getId()}" style="display: none">
-                         <form method="post" name="message${selectNum1.getId()}" id="message${selectNum1.getId()}">
-                            <table style="width:100%">
-                               <tr><th><textarea  placeholder="说点什么吧..." class="form-control" rows="2" name="content"></textarea></th></tr>        
-                               <tr><th><br/></th></tr>
-                               <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
-                               <tr><th><br/></th></tr>
-                              <tr><th><button type="button" class="btn btn-success" onClick="replyMessage('${selectNum1.getId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
+                           <form method="post" name="message${selectNum1.getId()}" id="message${selectNum1.getId()}">
+                              <table style="width:100%">
+                                  <tr><th><textarea  placeholder="说点什么吧..." class="form-control" rows="2" name="content"></textarea></th></tr>        
+                                  <tr><th><br/></th></tr>
+                                 <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
+                                 <tr><th><br/></th></tr>
+                                 <s:if test="#selectNum1.replyId==null">                            
+                                    <tr><th><button type="button" class="btn btn-success" onClick="replyMessage('${selectNum1.getId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
+                               </s:if>
+                               <s:else>                        
+                                       <tr><th><button type="button" class="btn btn-success" onClick="replyMessage('${selectNum1.getReplyId()}','<s:property value="currentPage"/>')">回复</button></th></tr>
+                               </s:else>
                           </table>
                         </form>             
                        </div>    
