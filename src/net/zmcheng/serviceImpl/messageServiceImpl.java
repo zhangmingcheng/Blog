@@ -16,15 +16,17 @@ public class messageServiceImpl implements messageService {
 	public void add(Message message) throws Exception {
 		messageDaoImpl.add(message);
 	}
+	public void updateStatus(int id) throws Exception{
+		messageDaoImpl.updateStatus(id);
+	}
 	 public Message getMessageById(int messageId) throws Exception{
 		 return messageDaoImpl. getMessageById(messageId);
 	 }
 	public int getAllMessageNum() throws Exception{
 		 return  messageDaoImpl.getAllMessageNum();
 	 }
-	public void delete(Message message) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void delete(int id) throws Exception {
+		messageDaoImpl.Delete(id);
 	}
 	public void update(Message message) throws Exception {
 		// TODO Auto-generated method stub

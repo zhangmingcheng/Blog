@@ -20,6 +20,9 @@
          <action name="articles" class="net.zmcheng.action.AllArticleAction" >
             <result>/WEB-INF/wp-admin/allArticle.jsp</result>
         </action>  
-    
+       
+       <action name="allMessages" class="net.zmcheng.action.MessageAction" >
+            <result>/WEB-INF/wp-admin/allMessages.jsp</result>
+        </action>
  </package>
 </struts>

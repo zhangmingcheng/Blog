@@ -15,12 +15,13 @@ public class Messages  implements java.io.Serializable{
      public Messages(){
     	 
      }
-     public Messages(Integer id,String sender,String content,String time,Integer replyId){
+     public Messages(Integer id,String sender,String content,String time,Integer replyId,int status){
     	 this.id = id;
        	 this.sender = sender;
     	 this.content = content;
     	 this.time = time;
     	 this.replyId = replyId;
+    	 this.status = status;
      }
 	public Integer getId() {
 		return id;

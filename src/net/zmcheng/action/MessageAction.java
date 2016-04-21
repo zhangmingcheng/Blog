@@ -17,6 +17,7 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 
 	private List<Messages> list;// 要返回的某一页的记录
 	private int messageId;
+	private int id;
 	private String content;
 	private String time;
 	private String sender;
@@ -36,6 +37,18 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
     public String addReply() throws Exception{
     	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime(),this.getMessageId());
     	messageServiceImpl.add(message);
+    	this.getLists();
+    	return SUCCESS;
+    }
+    //修改审批状况
+    public String updateStatus() throws Exception{
+    	messageServiceImpl.updateStatus(id);
+    	this.getLists();
+    	return SUCCESS;
+    }
+    //删除留言
+    public String delete() throws Exception{
+    	messageServiceImpl.delete(id);
     	this.getLists();
     	return SUCCESS;
     }
@@ -94,5 +107,11 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	}
 	public void setMessageId(int messageId) {
 		this.messageId = messageId;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

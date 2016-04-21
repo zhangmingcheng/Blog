@@ -63,7 +63,7 @@
 					<tr class="success"><th style="width: 80px"><a style="margin-left: 20%; margin-buttom: 10px;"
 						href="/Blog/wp-admin/userInformation">个人主页</a></th></tr><tr class="success"><th> <a
 						style="margin-left: 20%; margin-buttom: 10px;" href="/Blog/wp-admin/writeArticle">写文章</a></th></tr><tr class="success"><th>
-					<a style="margin-left: 20%; margin-buttom: 10px;" href="#">留言板</a></th></tr>
+					<a style="margin-left: 20%; margin-buttom: 10px;" href="/Blog/text/allMessages">留言板</a></th></tr>
 					</table>
 				</div>
 			</div>

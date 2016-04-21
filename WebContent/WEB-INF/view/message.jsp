@@ -80,7 +80,7 @@
 					                               <tr><th><textarea  placeholder="说点什么吧..." class="form-control" rows="2" name="content"></textarea></th></tr>        
 					                               <tr><th><br/></th></tr>
 					                               <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
-					                               <tr><th><div style="display: none;"><input  type="text"  name="messageId" value="${selectNum1.getId()}"></div></th></tr>          
+					                               <tr><th><div style="display: none;"><input  type="text"  name="messageId" value="${selectNum1.getReplyId()}"></div></th></tr>          
 					                               <tr><th><br/></th></tr>
 					                              <tr><th><input type="submit" class="btn btn-success" value="回复"></th></tr>
 					                          </table>
@@ -92,7 +92,7 @@
 	                           <!-- -->
 	                             <h5 style="font-size: 13px"> &nbsp;&nbsp;${selectNum1.getContent()}</h5>
 	                            <h5 style="font-size: 12px"> ${selectNum1.getTime()}&nbsp;&nbsp;<a href="#" onclick="showPopup('pop<%=++flag %>');" >回复</a>
-	                             <s:if test="#selectNum2.getStatus()==0">
+	                             <s:if test="#selectNum1.getStatus()==0">
 	                                  &nbsp;&nbsp;未审核
 	                                  </s:if></h5>
                                </div>                  
