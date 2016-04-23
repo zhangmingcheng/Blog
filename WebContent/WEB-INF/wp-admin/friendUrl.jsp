@@ -11,9 +11,30 @@
     <link href="<%=path %>/css/blog.css" rel="stylesheet" type="text/css"/>
     <link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="<%=path %>/js/jquery.min.js"></script>
-   <script src="<%=path %>/js/bootstrap.min.js"></script>
+    <script src="<%=path %>/js/bootstrap.min.js"></script>
    <script src="<%=path %>/js/prototype.js"></script>
   </head>
+  <script type="text/javascript">
+  function DeleteLink(id){
+	  var url = '/Blog/ajax/deleteLink';
+  	   var param = 'id='+id;
+  	   var myAjax = new Ajax.Request(
+  			  url,{method: 'post', parameters: param, onComplete:deleteFriendLink, asynchronous: true}    	 
+        	); 
+  }                                               
+  function deleteFriendLink(request){
+	  var temp = request.responseText.evalJSON();
+ 	   var strs =  '<tr style="height:30px">'+
+        ' <th>友链名称</th><th>友链URL</th><th>日期</th><th>编辑</th><th>删除</th>'+
+        '</tr>';
+        for(var n = 0;n<temp.length;n++){
+     	   strs+='<tr style="height:50px"><td>'+temp[n].name+'</td><td><a href="'+temp[n].url+'">'+temp[n].url+'</a></td><td>'+temp[n].time+'</td>'+
+     	   '<td><a href="/Blog/text/edit?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
+     	 '<td><button type="button" class="btn btn-success" onclick="deleteLink('+temp[n].id+')">删除</button></td></tr>';
+        }            
+      $("deletelinks").innerHTML = strs;
+  }
+  </script>
   <body>
 
     <%@ include file="head.jsp" %> 
@@ -39,52 +60,52 @@
 					<tr class="success"><th style="width: 80px"><a style="margin-left: 20%; margin-buttom: 10px;"
 						href="/Blog/wp-admin/userInformation">个人主页</a></th></tr><tr class="success"><th> <a
 						style="margin-left: 20%; margin-buttom: 10px;" href="/Blog/wp-admin/writeArticle">写文章</a></th></tr><tr class="success"><th>
-					<a style="margin-left: 20%; margin-buttom: 10px;" href="#">留言板</a></th></tr>
+					<a style="margin-left: 20%; margin-buttom: 10px;" href="/Blog/text/allMessages">留言板</a></th></tr>
 					</table>
 				</div>
 			</div>
 			<!-- 右半部分 -->
 			<div class="col-md-9">
 			<h4>添加友链</h4>
-			<form name="FORM" id="FORM">
-			<table  class="table table-hover table-bordered">
-			    <tr class="success"><th>友链名称:</th><th><input type="text" name="name" id="name"/></th></tr>
-			    <tr class="success"><th>友链URL:</th><th><input type="text" name="name" id="name"/></th></tr>
-			    <tr class="success"><th></th><th><input type="button" value="设置" class="btn btn-primary" onClick="AddUrl();"/></th></tr>
-			</table>
+			<form method="post" action="/Blog/text/addLink.action">
+					<table  class="table table-hover table-bordered">
+					    <tr class="success"><th>友链名称:</th><th><input type="text" name="name" id="name" placeholder="必填"/></th></tr>
+					    <tr class="success"><th>友链URL:</th><th><input type="text" name="url" id="url" placeholder="必填"/></th></tr>
+					    <tr class="success"><th><input type="submit"  value="确定添加" class="btn btn-primary" ></th><th><s:property value="result"/> </th></tr>
+					</table>
 			</form>
-			<!-- 
-                   <table class="table table-hover table-bordered" id="deleteArt">
-                   <tr style="height:30px">
-                       <th>标题</th><th>作者</th><th>日期</th><th>编辑</th><th>删除</th>
-                   </tr>            
-                    <s:iterator value="list"  id="selectNum1">                
-                        <tr style="height:50px">
-                        <td><a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a></td>
-                        <td>${selectNum1.getUser().getName()}</td>
-                         <td>${selectNum1.getPostdate()}</td>
-                         <td><a href="/Blog/text/edit?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>
-                         <td><button type="button" class="btn btn-success" onclick="deleteArticle(${selectNum1.getId()})">删除</button></td>
-                        </tr>                      
-                 </s:iterator>        
-                 </table>
+			<h5>共有<s:property value="allRow"/>条友链</h5>
+			<hr>		
+            <table class="table table-hover table-bordered" id="deletelinks">
+                    <tr style="height:30px">
+                       <th>友链名称</th><th>友链URL</th><th>日期</th><th>编辑</th><th>删除</th>
+                   </tr>                            
+                    <s:iterator value="list"  id="selectNum1">                           
+                       <tr style="height:50px">
+                         <td>${selectNum1.getName()}</td>
+                         <td><a href="${selectNum1.getUrl()}">${selectNum1.getUrl()}</a></td>                    
+                         <td>${selectNum1.getTime()}</td>
+                         <td><button type="button" class="btn btn-info">编辑</button></td>
+                         <td><button type="button" class="btn btn-success"  onclick="DeleteLink(${selectNum1.getId()})">删除</button></td>
+                      </tr>          
+                 </s:iterator>    
+               </table>
                  <nav>
                          <ul class="pager">
                          <s:if test="currentPage ==1">  
                             <li><a href="#">Previous</a></li>
                           </s:if>
                           <s:else>
-                             <li><a href="/Blog/text/articles?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
+                             <li><a href="/Blog/text/allLink?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
                           </s:else>
                            <s:if test="currentPage !=totalPage">  
-                              <li> <a href="/Blog/text/articles?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
+                              <li> <a href="/Blog/text/allLink?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
                            </s:if>
                            <s:else>
                               <li><a href="#">Next</a></li>
                            </s:else>
                           </ul>
-                </nav>              --> 
-                    
+                </nav>                       
 		</div>
 	   </div>
 	 </div>

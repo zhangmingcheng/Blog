@@ -1,13 +1,9 @@
 package net.zmcheng.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +13,14 @@ public class Link implements java.io.Serializable {
 	private Integer id;
 	private String name;
 	private String url;
-	private User user;
-
+	private String time;
+    public Link(){
+    }
+    public Link(String name,String url,String time){
+    	this.name = name;
+    	this.url = url;
+    	this.time = time;
+    }
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -44,14 +46,12 @@ public class Link implements java.io.Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	@ManyToOne(cascade ={CascadeType.ALL},optional=false,fetch =FetchType.LAZY,targetEntity = Province.class)		
-	 @JoinColumn(name="userId")
-	public User getUser() {
-		return user;
+	@Column(name="time")
+	public String getTime() {
+		return time;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setTime(String time) {
+		this.time = time;
 	}
 }
 

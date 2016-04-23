@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+@SuppressWarnings("serial")
 @Entity
 @Table(name="User")
-@SuppressWarnings("serial")
 public class User implements java.io.Serializable{
 	 private Integer id;
      private String name;

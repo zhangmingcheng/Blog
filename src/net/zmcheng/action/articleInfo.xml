@@ -21,8 +21,18 @@
             <result>/WEB-INF/wp-admin/allArticle.jsp</result>
         </action>  
        
-       <action name="allMessages" class="net.zmcheng.action.MessageAction" >
+        <action name="allMessages" class="net.zmcheng.action.MessageAction" >
             <result>/WEB-INF/wp-admin/allMessages.jsp</result>
+        </action>
+        <!-- 友情链接 -->
+          <action name="allLink" class="net.zmcheng.action.LinkAction" >
+            <result>/WEB-INF/wp-admin/friendUrl.jsp</result>
+        </action>   
+        <action name="addLink" class="net.zmcheng.action.LinkAction"  method="add">
+            <result>/WEB-INF/wp-admin/friendUrl.jsp</result>
+        </action>
+         <action name="updateLink" class="net.zmcheng.action.LinkAction"  method="update">
+            <result>/WEB-INF/wp-admin/friendUrl.jsp</result>
         </action>
  </package>
 </struts>

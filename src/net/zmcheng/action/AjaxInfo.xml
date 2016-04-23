@@ -49,5 +49,11 @@
                  <param name="root">list</param>
               </result>  
         </action>   
+        <!-- 友情链接 -->
+        <action name="deleteLink" class="net.zmcheng.action.LinkAction"  method="delete">
+            <result name="success" type="json">
+                 <param name="root">list</param>
+              </result>  
+        </action>
     </package>
     </struts>
