@@ -28,8 +28,8 @@
         ' <th>友链名称</th><th>友链URL</th><th>日期</th><th>编辑</th><th>删除</th>'+
         '</tr>';
         for(var n = 0;n<temp.length;n++){
-     	   strs+='<tr style="height:50px"><td>'+temp[n].name+'</td><td><a href="'+temp[n].url+'">'+temp[n].url+'</a></td><td>'+temp[n].time+'</td>'+
-     	   '<td><a href="/Blog/text/edit?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
+     	   strs+='<tr style="height:50px"><td>'+temp[n].name+'</td><td><a href="'+temp[n].url+'"  target="_blank">'+temp[n].url+'</a></td><td>'+temp[n].time+'</td>'+
+     	   '<td><a href="/Blog/text/updateLink?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
      	 '<td><button type="button" class="btn btn-success" onclick="deleteLink('+temp[n].id+')">删除</button></td></tr>';
         }            
       $("deletelinks").innerHTML = strs;
@@ -83,9 +83,9 @@
                     <s:iterator value="list"  id="selectNum1">                           
                        <tr style="height:50px">
                          <td>${selectNum1.getName()}</td>
-                         <td><a href="${selectNum1.getUrl()}">${selectNum1.getUrl()}</a></td>                    
+                         <td><a href="${selectNum1.getUrl()}"  target="_blank">${selectNum1.getUrl()}</a></td>                    
                          <td>${selectNum1.getTime()}</td>
-                         <td><button type="button" class="btn btn-info">编辑</button></td>
+                         <td><a href="/Blog/text/updateLink?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>
                          <td><button type="button" class="btn btn-success"  onclick="DeleteLink(${selectNum1.getId()})">删除</button></td>
                       </tr>          
                  </s:iterator>    

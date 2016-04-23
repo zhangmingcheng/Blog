@@ -49,6 +49,24 @@ public class LinkAction extends  ActionSupport implements Serializable , ModelDr
 		 this.result = "添加成功";
 		 return SUCCESS;
 	 }
+	 public String update() throws Exception{
+		  Link link =  linkServiceImpl.getLink(this.getId());
+		  this.setName(link.getName());
+		  this.setUrl(link.getUrl());
+		 return SUCCESS;
+	 }
+	 public String update2() throws Exception{
+		 if(this.getName().equals("")||this.getUrl().equals("")){
+			 this.result = "友链名称及友链URL不能为空，请您重新输入。";	 
+					 return SUCCESS;
+		 }
+		 Link link = linkServiceImpl.getLink(this.getId());
+		 link.setName(this.getName());
+		 link.setUrl(this.getUrl());
+		 linkServiceImpl.update(link);
+		 this.result = "修改友链成功";
+		 return SUCCESS;
+	 }
 	//删除指定友情链接
 	 public String delete() throws Exception{
 		 Link link = new Link();

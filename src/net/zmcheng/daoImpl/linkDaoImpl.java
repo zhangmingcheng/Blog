@@ -41,12 +41,14 @@ public class linkDaoImpl implements linkDao {
 		return temp;
 	}
 
-	@Override
 	public void update(Link link) throws Exception {
-		// TODO Auto-generated method stub
-
+		 Session session = sessionFactory.getCurrentSession();
+		 session.update(link);
 	}
-
+  public Link getLink(int id) throws Exception{
+	  Session session = sessionFactory.getCurrentSession();
+	  return (Link)session.get(Link.class,id);
+  }
 	public int getAllLink() throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Link");

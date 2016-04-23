@@ -32,7 +32,10 @@
             <result>/WEB-INF/wp-admin/friendUrl.jsp</result>
         </action>
          <action name="updateLink" class="net.zmcheng.action.LinkAction"  method="update">
-            <result>/WEB-INF/wp-admin/friendUrl.jsp</result>
+            <result>/WEB-INF/wp-admin/updateFriendUrl.jsp</result>
+        </action>
+         <action name="updateLink2" class="net.zmcheng.action.LinkAction"  method="update2">
+            <result>/WEB-INF/wp-admin/updateFriendUrl.jsp</result>
         </action>
  </package>
 </struts>

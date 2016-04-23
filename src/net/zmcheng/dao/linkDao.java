@@ -11,4 +11,5 @@ public interface linkDao {
     public void update(Link link) throws Exception;
     public int getAllLink() throws Exception;
     public int getArticleNum(int Id) throws Exception;
+    public Link getLink(int id) throws Exception;
 }

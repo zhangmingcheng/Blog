@@ -11,4 +11,5 @@ public interface linkService {
 	    public void update(Link link) throws Exception;
 	    public int getAllLink() throws Exception;
 	    public int getArticleNum(int id) throws Exception;
+	    public Link getLink(int id) throws Exception;
 }

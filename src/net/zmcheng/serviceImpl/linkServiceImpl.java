@@ -15,6 +15,9 @@ public class linkServiceImpl implements linkService {
      public int getAllLink() throws Exception{
     	 return linkDaoImpl.getAllLink();
      }
+     public Link getLink(int id) throws Exception{
+    	 return linkDaoImpl.getLink(id);
+     }
      public int getArticleNum(int id) throws Exception{
     	 return  linkDaoImpl.getArticleNum(id);
      }
@@ -31,7 +34,7 @@ public class linkServiceImpl implements linkService {
 	}
 
 	public void update(Link link) throws Exception {
-
+		linkDaoImpl.update(link);
 	}
 
 	public linkDao getLinkDaoImpl() {
