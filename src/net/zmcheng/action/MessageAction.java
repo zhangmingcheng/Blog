@@ -21,6 +21,8 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	private String content;
 	private String time;
 	private String sender;
+	private String result;
+	private String replyResult;
 	private Paging paging = new Paging();
 	private messageService messageServiceImpl;
 	public Paging getModel(){
@@ -28,6 +30,11 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	}
 	//添加留言
     public String add() throws Exception{
+    	if(this.getSender().equals("")||this.getContent().equals("")){
+    		this.getLists();
+    		this.setResult("发送者与内容都不能为空，请重新编写留言");
+    		return SUCCESS;
+    	}
     	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime());   	
     	messageServiceImpl.add(message);
     	this.getLists();
@@ -35,6 +42,11 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
     }
     //回复留言
     public String addReply() throws Exception{
+    	if(this.getSender().equals("")||this.getContent().equals("")){
+    		this.getLists();
+    		this.setReplyResult("发送者与内容都不能为空，请重新回复留言");
+    		return SUCCESS;
+    	}
     	Message message = new Message(this.getSender(),this.getContent(),MyDate.getTime(),this.getMessageId());
     	messageServiceImpl.add(message);
     	this.getLists();
@@ -113,5 +125,17 @@ public class MessageAction extends ActionSupport implements Serializable,ModelDr
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public String getReplyResult() {
+		return replyResult;
+	}
+	public void setReplyResult(String replyResult) {
+		this.replyResult = replyResult;
 	}
 }

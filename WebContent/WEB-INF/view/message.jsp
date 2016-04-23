@@ -45,10 +45,12 @@
                           <tr><th><br/></th></tr>
                           <tr><th><input type="submit" class="btn btn-success" value="提交"></th></tr>
                        </table>
+                      <h5 style="color:red">${result}</h5>
                    </form>                 
                    </div>  
                    <h5>共${allRow}条评论</h5>
                      <hr color="black">    
+                    <h5 style="color:red">${replyResult}</h5>
                  <div id="AllMessage">      
                     <s:iterator value="list"  id="selectNum1">      
                         <!-- 留言默认头像 -->            
