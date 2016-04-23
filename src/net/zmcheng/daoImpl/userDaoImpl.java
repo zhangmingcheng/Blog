@@ -31,6 +31,8 @@ public class userDaoImpl implements userDao {
 			user.setEmail(temp.getEmail());
 			user.setPhoto(temp.getPhoto());
 			user.setCreatetime(temp.getCreatetime());
+			temp.getProvince().getName();
+			temp.getCity().getName();
 			user.setProvince(temp.getProvince());
 			user.setCity(temp.getCity());
 			return true;
