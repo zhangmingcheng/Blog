@@ -1,6 +1,8 @@
 package net.zmcheng.action;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import net.zmcheng.model.Article;
+import net.zmcheng.model.ArticleMessages;
 import net.zmcheng.model.User;
 import net.zmcheng.service.articleService;
 import net.zmcheng.tool.MyDate;
@@ -19,8 +22,16 @@ import net.zmcheng.tool.MyDate;
 public class ArticleAction extends ActionSupport implements ModelDriven<Article> ,Serializable,ServletRequestAware{
 
 	private Article article = new Article();
+	private List<ArticleMessages> list = new ArrayList<ArticleMessages>();
+	public List<ArticleMessages> getList() {
+		return list;
+	}
+	public void setList(List<ArticleMessages> list) {
+		this.list = list;
+	}
 	private HttpServletRequest request;
 	private articleService articleServiceImpl;
+	private int articleReplyNum;
 	private int zanCount;
 	public void setServletRequest(HttpServletRequest request){
 		this.request = request;
@@ -69,6 +80,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         article2.setReadNum(article2.getReadNum()+1);
         articleServiceImpl.update(article2);
         article.setUser(article2.getUser());
+        list =  articleServiceImpl.getAllArticleMessage(article.getId());
     	return SUCCESS;
     }
    //修改赞数,并得到赞数
@@ -96,5 +108,10 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	public void setZanCount(int zanCount) {
 		this.zanCount = zanCount;
 	}
-
+	public int getArticleReplyNum() {
+		return articleReplyNum;
+	}
+	public void setArticleReplyNum(int articleReplyNum) {
+		this.articleReplyNum = articleReplyNum;
+	}
 }

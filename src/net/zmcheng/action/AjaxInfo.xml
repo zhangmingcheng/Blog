@@ -49,6 +49,12 @@
                  <param name="root">list</param>
               </result>  
         </action>   
+        <!-- 文章评论 -->
+        <action name="addArticleReplys" class="net.zmcheng.action.ArticleReplyAction"  method="addArticleReply">
+              <result name="success" type="json">
+                 <param name="root">list</param>
+              </result>  
+        </action> 
         <!-- 友情链接 -->
         <action name="deleteLink" class="net.zmcheng.action.LinkAction"  method="delete">
             <result name="success" type="json">

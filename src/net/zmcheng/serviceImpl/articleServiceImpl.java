@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import net.zmcheng.dao.articleDao;
 import net.zmcheng.model.Article;
+import net.zmcheng.model.ArticleMessages;
+import net.zmcheng.model.ArticleReply;
 import net.zmcheng.service.articleService;
 @Component
 public class articleServiceImpl implements articleService {
@@ -19,6 +21,9 @@ public class articleServiceImpl implements articleService {
   	public int getArticleNum(int id) throws Exception{
   		return articleDaoImpl.getArticleNum(id);
   	}
+  	 public List<ArticleMessages> getAllArticleMessage(int id) throws Exception{
+  		 return articleDaoImpl.getAllArticleMessage(id);
+  	 }
   //得到所有博文
   	public int getAllArticle() throws Exception{
   		return articleDaoImpl.getAllArticle();
@@ -46,7 +51,9 @@ public class articleServiceImpl implements articleService {
 		// TODO Auto-generated method stub
 
 	}
-
+	public void addArticleReply(ArticleReply articleReply) throws Exception{
+		articleDaoImpl.addArticleReply(articleReply);
+	}
 	public articleDao getArticleDaoImpl() {
 		return articleDaoImpl;
 	}

@@ -27,6 +27,7 @@
                <value>net.zmcheng.model.Province</value>
                <value>net.zmcheng.model.City</value>
                <value>net.zmcheng.model.Article</value>
+               <value>net.zmcheng.model.ArticleReply</value>
                <value>net.zmcheng.model.Link</value>
                <value>net.zmcheng.model.Message</value>
                </list>

@@ -1,5 +1,8 @@
 package net.zmcheng.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +19,7 @@ import javax.persistence.Table;
 public class Article implements java.io.Serializable{
 	 private Integer id;
 	 private User user;
+	 private Set<ArticleReply> articleReplys = new HashSet<ArticleReply>();  
      private String title;
      private int readNum;
      private String postdate;
@@ -30,12 +35,12 @@ public class Article implements java.io.Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@ManyToOne(cascade ={CascadeType.ALL},optional=false,targetEntity = User.class)
+	@ManyToOne(optional=false,targetEntity = User.class)//默认立即加载
 	 @JoinColumn(name="userId")
 	public User getUser() {
 		return user;
 	}
-	 
+	
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -87,5 +92,14 @@ public class Article implements java.io.Serializable{
 	public void setBrief(String brief) {
 		this.brief = brief;
 	}
+   @OneToMany(cascade=(CascadeType.REMOVE),mappedBy="article")//默认延迟加载
+	public Set<ArticleReply> getArticleReplys() {
+		return articleReplys;
+	}
+
+	public void setArticleReplys(Set<ArticleReply> articleReplys) {
+		this.articleReplys = articleReplys;
+	}
+
 
 }

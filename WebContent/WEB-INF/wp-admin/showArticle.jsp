@@ -16,9 +16,45 @@
 	type="text/css" />
 <script src="<%=path %>/js/prototype.js"></script>
 <script src="<%=path %>/js/UpdateUserAjax.js"></script>
+<script type="text/javascript">
+		function showPopup(IdNum){ 
+		    var popUp = document.getElementById(IdNum); 
+		    popUp.style.display="block";
+		} 
+		  function AddArticleReply(){
+		       	var url ='/Blog/ajax/addArticleReplys.action';
+		       	var param = Form.serialize('ADDArticleReply');
+		       	alert(param);
+		       	var myAjax = new Ajax.Request(
+		             	  url,{method: 'post', parameters: param, onComplete:  AddArticleReplyResponse, asynchronous: true}    	 
+		             	); 
+		       }     
+		      function  AddArticleReplyResponse(request){
+		    	var temp  = request.responseText.evalJSON();     
+		    	for(var n = 0;n<temp.length;n++){
+		    		alert(temp[n].id);
+		    	}
+		       }
+      function AddArticleMessage(ArticleId,Flag){
+    	  $("ALLArticleMessage").innerHTML = '12334444444';
+    	 	//var url ='/Blog/ajax/addArticleReplys.action';
+    		//var param = Form.serialize('message'+Flag);
+    		//param+='&articleId='+ArticleId;
+    		//var myAjax = new Ajax.Request(
+               	  //url,{method: 'post', parameters: param, onComplete:  AddArticleReplyResponse2, asynchronous: true}    	 
+               	//); 
+      }
+      function  AddArticleReplyResponse2(request){
+    	  alert('shshshshhs');
+    	  var temp  = request.responseText.evalJSON();     
+    
+         }
+</script>
 </head>
 
 <body>
+ <%! int flag=0;%>
+ <%flag=0;%>
 	<%@ include file="head.jsp"%>
 	<div class="container">
 		<div class="row">
@@ -36,6 +72,93 @@
 			     未经允许不得转载
 			   </div>
 			   <button id="ZAN" style="margin-top: 20px;margin-left: 45%"type="button" class="btn btn-info glyphicon glyphicon-thumbs-up"  onClick="UpdateZan(${id});">&nbsp;赞(${zanNum})</button>
+		       <HR size=2>
+		       <div >
+		               <h4>评论(${allnum})</h4>
+		                   <form method="post" name="ADDArticleReply" id="ADDArticleReply">
+		                        <div style="display: none;"><input type="text" name="articleId" value="${id}"></div>
+		                      <table style="width:100%">
+		                          <tr><th><textarea  placeholder="说点什么吧,必填..." class="form-control" rows="3" name="content"></textarea></th></tr>        
+		                          <tr><th><br/></th></tr>
+		                          <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
+		                          <tr><th><br/></th></tr>
+		                          <tr><th><input type="button" value="提交" class="btn btn-primary" onClick="AddArticleReply();"/></th></tr>
+		                       </table>        
+		                   </form>                 
+                </div>  
+                <!-- 留言内容区域 -->
+                <div id="ALLArticleMessage">      
+                    <s:iterator value="list"  id="selectNum1">      
+                        <!-- 留言默认头像 -->            
+                          <div style="float: none">     
+                                <div style="float:left;width:60px">                     
+                                     <img class="img-circle" title="用户头像" style="height: 50px; width: 50px;"src="<%=path%>/images/default.jpg">
+                               </div>       
+                          <!-- 留言内容区 -->                                                                                         
+                           <div style="margin-left:10%">
+	                               <h5 style="font-size: 18px;color:blue"> ${selectNum1.getSender()}：</h5>
+	                              <!-- -->       
+	                               <%! int temp=0;%>              
+	                               <%temp=0; %>                                 
+	                             <s:iterator value="#selectNum1.getMessages()"  id="selectNum2">                                                     
+	                               <div>
+	                               <div style="background-color: #F0F0F0">                                            
+	                                  <h5 style="font-size: 15px">&nbsp;&nbsp;<%=++temp %>楼:&nbsp;&nbsp;&nbsp;<span style="color:#272727">${selectNum2.getSender()}：</span>
+	                                  &nbsp;&nbsp;<span style="font-size: 12px">${selectNum2.getContent()}&nbsp;&nbsp;&nbsp;${selectNum2.getTime()}
+	                                  &nbsp;&nbsp;<a href="#" onclick="showPopup('pop<%=++flag%>');" >回复</a> 
+	                                  <s:if test="#selectNum2.getStatus()==0">
+	                                  &nbsp;&nbsp;未审核
+	                                  </s:if>
+	                                  </span></h5>       
+	                                </div>                                                                                                    
+	                                   <!-- 弹框 -->
+	                                   <div id="pop<%=flag%>" style="display: none">
+					                          <form method="post"  id="message<%=++flag%>"  name="message<%=flag%>">
+					                            <table style="width:100%">
+					                               <tr><th><textarea  placeholder="说点什么吧,必填..." class="form-control" rows="2" name="content"></textarea></th></tr>        
+					                               <tr><th><br/></th></tr>
+					                               <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
+					                               <tr><th><div style="display: none;"><input  type="text"  name="replyId" value="${selectNum1.getReplyId()}"></div></th></tr>          
+					                               <tr><th><br/></th></tr>
+					                              <tr><th><input type="button" value="提交" class="btn btn-primary" onClick="AddArticleMessage(${selectNum1.getArticleId()},<%=flag%>)"/></th></tr>
+					                          </table>
+					                        </form>             
+					                   </div> 
+					                </div>             
+					                <!--  --> 
+	                           </s:iterator>       
+	                           <!-- -->
+	                             <h5 style="font-size: 13px"> &nbsp;&nbsp;${selectNum1.getContent()}</h5>
+	                            <h5 style="font-size: 12px"> ${selectNum1.getTime()}&nbsp;&nbsp;<a href="#" onclick="showPopup('pop<%=++flag %>');" >回复</a>
+	                             <s:if test="#selectNum1.getStatus()==0">
+	                                  &nbsp;&nbsp;未审核
+	                                  </s:if></h5>
+                               </div>                  
+                        </div>            
+                                                 
+                        <div id="pop<%=flag %>" style="display: none">
+                           <form method="post"  id="message<%=++flag%>" name="message<%=flag%>">
+                              <table style="width:100%">
+                                  <tr><th><textarea  placeholder="说点什么吧,必填..." class="form-control" rows="2" name="content"></textarea></th></tr>        
+                                  <tr><th><br/></th></tr>
+                                 <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
+                                 <tr><th><br/></th></tr>
+                                 <s:if test="#selectNum1.replyId==null">          
+                                 <tr><th><div style="display: none;"><input  type="text"  name="replyId" value="${selectNum1.getId()}"></div></th></tr>                            
+                                 <tr><th><input type="button" value="提交" class="btn btn-primary" onClick="AddArticleMessage(${selectNum1.getArticleId()},<%=flag%>)"/></th></tr>
+                               </s:if>
+                               <s:else>                      
+                                  <tr><th><div style="display: none;"><input  type="text"  name="replyId" value="${selectNum1.getReplyId()}"></div></th></tr>                            
+                                  <tr><th><input type="button" value="提交" class="btn btn-primary" onClick="AddArticleMessage(${selectNum1.getArticleId()},<%=flag%>)"/></th></tr>                          
+                               </s:else>
+                          </table>
+                        </form>             
+                       </div>    
+                                                
+                       <hr color="black">  
+                 </s:iterator>                
+                 </div>      
+                 <!-- 留言内容区域 -->
 			</div>
 			<!-- 右半部分 -->
 			<div class="col-md-3" style="background-color: green; height: 600px">
