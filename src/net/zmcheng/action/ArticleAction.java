@@ -57,6 +57,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     	article.setContent(article2.getContent());
     	article.setTitle(article2.getTitle());
     	article.setBrief(article2.getBrief());
+    	list =  articleServiceImpl.getAllArticleMessage(article.getId());
     	return SUCCESS;
     }
     //编辑指定博文，更新博文

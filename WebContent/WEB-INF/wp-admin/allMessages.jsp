@@ -107,7 +107,7 @@
                    </tr>            
                     <s:iterator value="list"  id="selectNum1">                
                         <tr style="height:50px">
-                        <td>${selectNum1.getSender()}</a></td>
+                        <td>${selectNum1.getSender()}</td>
                         <td>${selectNum1.getContent()}</td>
                          <td>${selectNum1.getTime()}</td>
                          <s:if test="#selectNum1.getStatus()==0">

@@ -102,6 +102,12 @@ public class articleDaoImpl implements articleDao {
 		session.update(article);
 
 	}
+	 public void updateStatus(int id) throws Exception{
+		 Session session = sessionFactory.getCurrentSession();
+		 ArticleReply  articleReply = (ArticleReply)session.get(ArticleReply.class,id);
+		 articleReply.setStatus(1);
+		 session.update(articleReply);
+	 }
 	public void addArticleReply(ArticleReply articleReply) throws Exception{
 		Session session = sessionFactory.getCurrentSession();
 		session.save(articleReply);
@@ -112,13 +118,16 @@ public class articleDaoImpl implements articleDao {
 
 	}
 
-	@Override
 	public void delete(Article article) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(article);
-
 	}
-
+	
+	public void deleteArticleReply(int id) throws Exception{
+		Session session = sessionFactory.getCurrentSession();
+		ArticleReply  articleReply = (ArticleReply)session.get(ArticleReply.class,id);
+		session.delete(articleReply);
+	}
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

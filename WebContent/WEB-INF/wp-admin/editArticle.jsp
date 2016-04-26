@@ -21,11 +21,66 @@
 <!-- 编辑器源码文件 -->
 <script src="<%=path%>/ueditor/ueditor.all.min.js"></script>
 <script charset="utf-8" src="<%=path%>/js/baiduUE/zh-cn.js"></script>
+<script src="<%=path %>/js/prototype.js"></script>
 <style type="text/css">
 div {
 	width: 100%;
 }
 </style>
+  <script type="text/javascript">
+   var current;
+   function statusArticleMessage(id,articleId){
+		 var url = '/Blog/ajax/statusArticleMessage.action';
+		var param = 'id='+id+'&articleId='+articleId;
+		var myAjax = new Ajax.Request(
+	         	  url,{method: 'post', parameters: param, onComplete: updateArticleStatus, asynchronous: true}    	 
+	         	); 
+	   }
+       function updateArticleStatus(request){
+    	   var temp = request.responseText.evalJSON();
+    	   var strs =  '<tr style="height:30px">'+
+           '<th>标题</th><th>作者</th><th>日期</th><th>审批情况</th><th>删除</th></tr>';
+           for(var n = 0;n<temp.length;n++){
+        	   strs+='<tr style="height:50px"><td>'+temp[n].sender+'</td><td>'+temp[n].content+'</td><td>'+temp[n].time+'</td>';
+        	   strs+='  <td style="width: 100px"><input type="button" class="btn btn-info" onclick="statusArticleMessage(';
+        	   strs=strs+temp[n].id+','+temp[n].articleId;
+        	   if(temp[n].status==0){     			
+        		    strs+=' )" value="未审批，点击按钮进行审批"/></td>';
+        	   }
+        	   else{
+        		   strs+=')" value="已审批"/></td>';
+        	   }
+        	   strs+='<td><input type="button" class="btn btn-success" onclick="deleteArticleMessage('+temp[n].id+','+temp[n].articleId+')" value="删除"/></td></tr>';
+           }          
+         $("updateArticleMessageInfo").innerHTML = strs;
+       }
+       //删除留言
+       function deleteArticleMessage(id,articleId){
+  		 var url = '/Blog/ajax/deleteArticleMessage.action';
+  		var param = 'id='+id+'&articleId='+articleId;
+  		var myAjax = new Ajax.Request(
+  	         	  url,{method: 'post', parameters: param, onComplete: deleteArticleMessage2, asynchronous: true}    	 
+  	         	); 
+       }
+       function deleteArticleMessage2(request){
+    	   var temp = request.responseText.evalJSON();
+    	   var strs =  '<tr style="height:30px">'+
+           '<th>标题</th><th>作者</th><th>日期</th><th>审批情况</th><th>删除</th></tr>';
+           for(var n = 0;n<temp.length;n++){
+        	   strs+='<tr style="height:50px"><td>'+temp[n].sender+'</td><td>'+temp[n].content+'</td><td>'+temp[n].time+'</td>';
+        	   strs+='  <td style="width: 100px"><input type="button" class="btn btn-info" onclick="statusArticleMessage(';
+        	   strs=strs+temp[n].id+','+temp[n].articleId;
+        	   if(temp[n].status==0){     			
+        		    strs+=' )" value="未审批，点击按钮进行审批"/></td>';
+        	   }
+        	   else{
+        		   strs+=')" value="已审批"/></td>';
+        	   }
+        	   strs+='<td><input type="button" class="btn btn-success" onclick="deleteArticleMessage('+temp[n].id+','+temp[n].articleId+')" value="删除"/></td></tr>';
+           }          
+         $("updateArticleMessageInfo").innerHTML = strs;
+       }
+   </script>
 </head>
 
 <body>
@@ -59,6 +114,27 @@ div {
 					var editor = new baidu.editor.ui.Editor();
 					editor.render("myEditor");
 				</script>
+				<!-- 编辑文章留言-->
+				<table class="table table-hover table-bordered" id="updateArticleMessageInfo">
+                   <tr style="height:30px">
+                       <th>发送者</th><th>内容</th><th>日期</th><th>审批情况</th><th>删除</th>
+                   </tr>            
+                    <s:iterator value="list"  id="selectNum1">                
+                        <tr style="height:50px">
+                        <td>${selectNum1.getSender()}</td>
+                        <td>${selectNum1.getContent()}</td>
+                         <td>${selectNum1.getTime()}</td>
+                         <s:if test="#selectNum1.getStatus()==0">
+                         <td style="width: 100px"><input type="button" class="btn btn-info" onclick="statusArticleMessage(${selectNum1.getId()},${selectNum1.getArticleId()})" value="未审批，点击按钮进行审批"/></td>
+                         </s:if>
+                         <s:else>
+                          <td  style="width: 100px"><button type="button" class="btn btn-info">已审批</button></td>
+                         </s:else>
+                         <td><input type="button" class="btn btn-success" onclick="deleteArticleMessage(${selectNum1.getId()},${selectNum1.getArticleId()})" value="删除"/></td>
+                        </tr>                      
+                 </s:iterator>        
+                 </table>
+                 <!-- 编辑文章留言 -->
 			</div>
 			<!-- 右半部分 -->
 			<div class="col-md-3" style="background-color: green; height: 600px">

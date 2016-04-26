@@ -9,7 +9,9 @@ import net.zmcheng.model.ArticleReply;
 public interface articleService {
     public void write(Article article) throws Exception;
     public void delete(Article article) throws Exception;
+    public void deleteArticleReply(int id) throws Exception;
     public void update(Article article) throws Exception;
+    public void updateStatus(int id) throws Exception;
     public void select(Article article) throws Exception;
     public Article getArticle(int id) throws Exception;
     public List<ArticleMessages> getAllArticleMessage(int id) throws Exception;

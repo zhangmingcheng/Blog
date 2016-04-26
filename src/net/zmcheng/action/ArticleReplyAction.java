@@ -33,8 +33,20 @@ public class ArticleReplyAction extends ActionSupport implements ModelDriven<Art
        list =  articleServiceImpl.getAllArticleMessage(articleId);
     	return SUCCESS;
     }
-  
- 
+  //更改评论状态（是否已阅读）
+    public String statusArticleMessage() throws Exception{
+    	articleServiceImpl.updateStatus(articleReply.getId());
+    	list =  articleServiceImpl.getAllArticleMessage(articleId);
+    	return SUCCESS;
+    }
+    //删除评论
+    public String  deleteArticleMessage() throws Exception{
+    	System.out.println("=====================");
+    	articleServiceImpl.deleteArticleReply(articleReply.getId());
+    
+    	list =  articleServiceImpl.getAllArticleMessage(articleId);
+    	return SUCCESS;
+    }
     public ArticleReply getModel(){
 		return articleReply;
 	}

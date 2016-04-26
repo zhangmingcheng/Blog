@@ -40,12 +40,17 @@ public class articleServiceImpl implements articleService {
 	public void delete(Article article) throws Exception {
 		articleDaoImpl.delete(article);
 	}
-   
+	//删除博客评论
+	public void deleteArticleReply(int id) throws Exception{
+		articleDaoImpl.deleteArticleReply(id);
+	}
 	//更新博文
 	public void update(Article article) throws Exception {
 		articleDaoImpl.update(article);
 	}
-
+	 public void updateStatus(int id) throws Exception{
+		 articleDaoImpl.updateStatus(id);
+	 }
 	@Override
 	public void select(Article article) throws Exception {
 		// TODO Auto-generated method stub

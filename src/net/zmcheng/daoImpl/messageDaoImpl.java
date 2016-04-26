@@ -43,7 +43,6 @@ public class messageDaoImpl implements messageDao {
 			query.setInteger("tempReplyId", id);
 			List<Message> result = query.list();
 			for (Message temp : result) {
-				System.out.println("lalalal");
 				session.delete(temp);
 			}
 		}
@@ -54,7 +53,6 @@ public class messageDaoImpl implements messageDao {
 			query.setInteger("tempId", id);
 			List<Message> result = query.list();
 			for (Message temp : result) {
-				System.out.println("lalalal");
 				session.delete(temp);
 			}
 		}

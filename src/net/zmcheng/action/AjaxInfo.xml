@@ -54,6 +54,16 @@
               <result name="success" type="json">
                  <param name="root">list</param>
               </result>  
+        </action>
+         <action name="deleteArticleMessage" class="net.zmcheng.action.ArticleReplyAction"  method="deleteArticleMessage">
+              <result name="success" type="json">
+                 <param name="root">list</param>
+              </result>  
+        </action> 
+        <action name="statusArticleMessage" class="net.zmcheng.action.ArticleReplyAction"  method="statusArticleMessage">
+              <result name="success" type="json">
+                 <param name="root">list</param>
+              </result>  
         </action> 
         <!-- 友情链接 -->
         <action name="deleteLink" class="net.zmcheng.action.LinkAction"  method="delete">
