@@ -16,6 +16,7 @@
 	type="text/css" />
 <script src="<%=path %>/js/prototype.js"></script>
 <script src="<%=path %>/js/UpdateUserAjax.js"></script>
+<script src="<%=path %>/js/showArticleMessage.js"></script>
 <script type="text/javascript">
 		function showPopup(IdNum){ 
 		    var popUp = document.getElementById(IdNum); 
@@ -35,25 +36,13 @@
 		    		alert(temp[n].id);
 		    	}
 		       }
-      function AddArticleMessage(ArticleId,Flag){
-    	  $("ALLArticleMessage").innerHTML = '12334444444';
-    	 	//var url ='/Blog/ajax/addArticleReplys.action';
-    		//var param = Form.serialize('message'+Flag);
-    		//param+='&articleId='+ArticleId;
-    		//var myAjax = new Ajax.Request(
-               	  //url,{method: 'post', parameters: param, onComplete:  AddArticleReplyResponse2, asynchronous: true}    	 
-               	//); 
-      }
-      function  AddArticleReplyResponse2(request){
-    	  alert('shshshshhs');
-    	  var temp  = request.responseText.evalJSON();     
-    
-         }
+                       
 </script>
 </head>
 
 <body>
  <%! int flag=0;%>
+ <%!int temp=0;%>   
  <%flag=0;%>
 	<%@ include file="head.jsp"%>
 	<div class="container">
@@ -98,7 +87,7 @@
                            <div style="margin-left:10%">
 	                               <h5 style="font-size: 18px;color:blue"> ${selectNum1.getSender()}：</h5>
 	                              <!-- -->       
-	                               <%! int temp=0;%>              
+	                                       
 	                               <%temp=0; %>                                 
 	                             <s:iterator value="#selectNum1.getMessages()"  id="selectNum2">                                                     
 	                               <div>

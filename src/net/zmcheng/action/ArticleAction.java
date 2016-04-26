@@ -98,7 +98,6 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	public articleService getArticleServiceImpl() {
 		return articleServiceImpl;
 	}
-
 	public void setArticleServiceImpl(articleService articleServiceImpl) {
 		this.articleServiceImpl = articleServiceImpl;
 	}

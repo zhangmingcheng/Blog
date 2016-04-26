@@ -22,7 +22,6 @@ public class ArticleReplyAction extends ActionSupport implements ModelDriven<Art
 	private int 	articleId;
     //写博文评论
     public String addArticleReply() throws Exception{
-    	System.out.println("鹅鹅鹅鹅鹅鹅鹅鹅鹅饿鹅鹅鹅鹅鹅鹅鹅鹅鹅饿");
     	if(articleReply.getContent().equals("")||articleReply.getSender().equals("")){
          list =  articleServiceImpl.getAllArticleMessage(articleId);
     		return SUCCESS;
@@ -32,7 +31,6 @@ public class ArticleReplyAction extends ActionSupport implements ModelDriven<Art
     	articleReply.setArticle(article);
     	articleServiceImpl.addArticleReply(articleReply);
        list =  articleServiceImpl.getAllArticleMessage(articleId);
-       System.out.println("鹅鹅鹅鹅鹅鹅鹅鹅鹅饿鹅鹅鹅鹅鹅鹅鹅鹅鹅饿");
     	return SUCCESS;
     }
   
