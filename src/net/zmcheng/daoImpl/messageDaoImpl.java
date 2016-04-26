@@ -44,8 +44,7 @@ public class messageDaoImpl implements messageDao {
 			query.setInteger("tempReplyId", id);
 			List<Message> result = query.list();
 			for (Message temp : result) {
-				session.delete(temp);
-			}
+				session.delete(temp);}
 		}
 		else{
 			Query query = session.createQuery("from Message as  u where u.replyId=:tempReplyId and u.id>:tempId");
