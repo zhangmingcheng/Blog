@@ -17,27 +17,6 @@
 <script src="<%=path %>/js/prototype.js"></script>
 <script src="<%=path %>/js/UpdateUserAjax.js"></script>
 <script src="<%=path %>/js/showArticleMessage.js"></script>
-<script type="text/javascript">
-		function showPopup(IdNum){ 
-		    var popUp = document.getElementById(IdNum); 
-		    popUp.style.display="block";
-		} 
-		  function AddArticleReply(){
-		       	var url ='/Blog/ajax/addArticleReplys.action';
-		       	var param = Form.serialize('ADDArticleReply');
-		       	alert(param);
-		       	var myAjax = new Ajax.Request(
-		             	  url,{method: 'post', parameters: param, onComplete:  AddArticleReplyResponse, asynchronous: true}    	 
-		             	); 
-		       }     
-		      function  AddArticleReplyResponse(request){
-		    	var temp  = request.responseText.evalJSON();     
-		    	for(var n = 0;n<temp.length;n++){
-		    		alert(temp[n].id);
-		    	}
-		       }
-                       
-</script>
 </head>
 
 <body>
@@ -63,7 +42,7 @@
 			   <button id="ZAN" style="margin-top: 20px;margin-left: 45%"type="button" class="btn btn-info glyphicon glyphicon-thumbs-up"  onClick="UpdateZan(${id});">&nbsp;赞(${zanNum})</button>
 		       <HR size=2>
 		       <div >
-		               <h4>评论(${allnum})</h4>
+		               <h4>评论：</h4>
 		                   <form method="post" name="ADDArticleReply" id="ADDArticleReply">
 		                        <div style="display: none;"><input type="text" name="articleId" value="${id}"></div>
 		                      <table style="width:100%">
