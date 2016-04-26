@@ -41,9 +41,7 @@ public class ArticleReplyAction extends ActionSupport implements ModelDriven<Art
     }
     //删除评论
     public String  deleteArticleMessage() throws Exception{
-    	System.out.println("=====================");
     	articleServiceImpl.deleteArticleReply(articleReply.getId());
-    
     	list =  articleServiceImpl.getAllArticleMessage(articleId);
     	return SUCCESS;
     }

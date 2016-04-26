@@ -17,6 +17,7 @@ import net.zmcheng.dao.articleDao;
 import net.zmcheng.model.Article;
 import net.zmcheng.model.ArticleMessages;
 import net.zmcheng.model.ArticleReply;
+import net.zmcheng.model.Message;
 @Component
 public class articleDaoImpl implements articleDao {
 	private  SessionFactory sessionFactory;
@@ -125,8 +126,26 @@ public class articleDaoImpl implements articleDao {
 	
 	public void deleteArticleReply(int id) throws Exception{
 		Session session = sessionFactory.getCurrentSession();
-		ArticleReply  articleReply = (ArticleReply)session.get(ArticleReply.class,id);
-		session.delete(articleReply);
+		ArticleReply  mes  = (ArticleReply)session.get(ArticleReply.class,id);
+		if(mes.getReplyId()==null){
+			Query query = session.createQuery("from ArticleReply  as  u where u.replyId=:tempReplyId");
+			query.setInteger("tempReplyId", id);
+			List<ArticleReply> result = query.list();
+			for (ArticleReply temp : result) {
+				session.delete(temp);
+			}
+		}
+		else{
+			Query query = session.createQuery("from ArticleReply as  u where u.replyId=:tempReplyId and u.id>:tempId");
+			int tempReplyId = mes.getReplyId();
+			query.setInteger("tempReplyId", tempReplyId);
+			query.setInteger("tempId", id);
+			List<Message> result = query.list();
+			for (Message temp : result) {
+				session.delete(temp);
+			}
+		}
+		session.delete(mes);
 	}
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

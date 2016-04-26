@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import net.zmcheng.dao.messageDao;
+import net.zmcheng.model.ArticleReply;
 import net.zmcheng.model.Message;
 import net.zmcheng.model.Messages;
 
