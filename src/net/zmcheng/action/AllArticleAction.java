@@ -29,6 +29,10 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 			   paging.setTotalPage(totalpage);
 			   int start =paging.countOffset();
 			   list =  articleServiceImpl.getArticles(start, Paging.getPageSize());
+			   for(Article temp:list){
+				   int num =  articleServiceImpl.getArticleMessageNum(temp.getId());
+				   temp.setMessageNum(num);
+			   }
 			   return SUCCESS;
 		   }
 		  //删除指定博文

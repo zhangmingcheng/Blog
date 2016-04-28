@@ -23,7 +23,8 @@
                               <div style="margin-left:5%;padding-bottom: 2%">
                                 <h5>&nbsp;</h5>
                                  <h4 style="font-weight: bold;color:004B97"><a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a></h4>
-                                 <h5 style="color:#6C6C6C">${selectNum1.getUser().getName()}&nbsp;发布于&nbsp;${selectNum1.getPostdate()}&nbsp;&nbsp;阅读(${selectNum1.getReadNum()})&nbsp;&nbsp;评论(0)&nbsp;&nbsp;</h5>
+                                 <h5 style="color:#6C6C6C">${selectNum1.getUser().getName()}&nbsp;发布于&nbsp;${selectNum1.getPostdate()}&nbsp;&nbsp;阅读(${selectNum1.getMessageNum()})&nbsp;&nbsp;
+                                 评论(${ selectNum1.getMessageNum()})&nbsp;&nbsp;</h5>
                                  <p>${selectNum1.getBrief() }</p>
                                 <h5 style="font-weight: bold;"><a href="/Blog/head/open?id=${selectNum1.getId()}">【查看详情】</a></h5>                
                              </div>

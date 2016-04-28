@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Article")
@@ -26,6 +27,7 @@ public class Article implements java.io.Serializable{
      private String content;
      private int zanNum;
      private String brief;
+     private int messageNum;
      @Id
      @GeneratedValue
 	public Integer getId() {
@@ -99,6 +101,14 @@ public class Article implements java.io.Serializable{
 
 	public void setArticleReplys(Set<ArticleReply> articleReplys) {
 		this.articleReplys = articleReplys;
+	}
+	  @Transient
+	public int getMessageNum() {
+		return messageNum;
+	}
+
+	public void setMessageNum(int messageNum) {
+		this.messageNum = messageNum;
 	}
 
 

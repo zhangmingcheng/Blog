@@ -50,6 +50,12 @@ public class articleDaoImpl implements articleDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(article);
 	}
+	public int getArticleMessageNum(int id) throws Exception{
+		Session session = sessionFactory.getCurrentSession();
+		Article article = (Article)session.get(Article.class,id);
+		Set<ArticleReply> sets = article.getArticleReplys();
+		return sets.size();
+	}
    //得到指定博文
 	public Article getArticle(int id) throws Exception{
 		Session session = sessionFactory.getCurrentSession();

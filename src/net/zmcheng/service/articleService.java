@@ -13,6 +13,7 @@ public interface articleService {
     public void update(Article article) throws Exception;
     public void updateStatus(int id) throws Exception;
     public void select(Article article) throws Exception;
+    public int getArticleMessageNum(int id) throws Exception;
     public Article getArticle(int id) throws Exception;
     public List<ArticleMessages> getAllArticleMessage(int id) throws Exception;
   //分页查询数据setFirstResult(start)中索引start是从0开始的

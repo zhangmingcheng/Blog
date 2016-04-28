@@ -44,6 +44,9 @@ public class articleServiceImpl implements articleService {
 	public void deleteArticleReply(int id) throws Exception{
 		articleDaoImpl.deleteArticleReply(id);
 	}
+	public int getArticleMessageNum(int id) throws Exception{
+		return articleDaoImpl.getArticleMessageNum(id);
+	}
 	//更新博文
 	public void update(Article article) throws Exception {
 		articleDaoImpl.update(article);
