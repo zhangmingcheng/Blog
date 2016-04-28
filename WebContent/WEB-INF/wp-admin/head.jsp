@@ -12,23 +12,14 @@
 					<li><a class="blog-nav-item" href="/Blog/text/allMessages"">留言管理</a></li>
 				</ul>
 			</div>
-			<s:if test="%{#session.user==null}">
-				<div class="col-md-1">
-					<a class="blog-nav-item" href="/Blog/login">登陆</a>
-				</div>
-				<div class="col-md-1">
-					<a class="blog-nav-item" href="/Blog/wp-admin/register">注册</a>
-				</div>
-			</s:if>
-			<s:else>
-				<div class="col-md-1">
+		<div class="col-md-1">
 					<h4>
 						<s:property value="#session.user.getName()" />
 					</h4>
-				</div>
-				<div class="col-md-1">
+		</div>
+		<div class="col-md-1">
 					<a class="blog-nav-item" href="/Blog/user/quit.action">退出</a>
-				</div>
-			</s:else>
+		</div>
+			
 		</div>
 	</div>

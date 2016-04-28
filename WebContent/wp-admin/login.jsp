@@ -20,10 +20,6 @@
 		<button type="submit" class="btn btn-primary btn-block btn-large">登陆</button>
 		<a href="/Blog/wp-admin/register"><button type="button" class="btn btn-success btn-block btn-large">注册</button></a>
       </form>
-     <table>
-	   <tr><th><s:property value="#request.usererror" /></th></tr>
-	</table>
-	
 </div>
 </body>
 </html>

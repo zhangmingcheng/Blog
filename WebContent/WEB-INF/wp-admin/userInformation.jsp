@@ -55,10 +55,10 @@
 				<div style="height: 450px">																			  
 							<form id="form1" name="form1" method="post"  action="">									
 										<table class="table table-hover">	
-										<tr><th style="width: 80px"><h5>新  密  码:</h5></th><th style="width: 100px"><input type="password" name="password" id="password" /></th>
+										<tr><th style="width: 80px"><h5>新  密  码:</h5></th><th style="width: 100px"><input type="password" name="password" id="password"/></th>
 										<th><input type="button"  value="修改" class="btn btn-primary" onClick="UpdatePsw();"/><th>
 										</tr>
-		                                <tr><th><h5>确定密码:</h5></th><th><input type="password" name="passwordAgain" id="passwordAgain" /></th>
+		                                <tr><th><h5>确定密码:</h5></th><th><input type="password" name="passwordAgain" id="passwordAgain"/></th>
 		                                <th><label id="response" style="color: blue"> </label></th></tr>		                                              
 		                                </table>	
                                 </form>
@@ -80,7 +80,7 @@
 										 <tr><th  style="width: 80px"><h5>现居住地:</h5></th>
 										 <th style="width: 120px">								 
 										 <select class="form-control" id="select1" name="select1"  onChange="UpdatePro()">
-										   <s:if  test="%{#session.user.getProvince==null}"> <option>-&nbsp;-&nbsp;省&nbsp;-&nbsp;-</option></s:if>									   
+										   <s:if  test="%{#session.user.getProvince()==null}"> <option>-&nbsp;-&nbsp;省&nbsp;-&nbsp;-</option></s:if>									   
 										   <s:else><option><h5><s:property value="#session.user.getProvince().getName()"/></h5></option></s:else>
 										        <s:iterator value="#session.province"  id="selectNum1">                
                                                    <option value='${selectNum1.getId() }'> ${selectNum1.getName() }</option>
@@ -88,7 +88,7 @@
 										 </select></th><th style="width: 10px"><h5>-</h5></th><th style="width: 120px">
 								
 										 <select id="select2" name="select2" class="form-control" >
-										          <s:if  test="%{#session.user.getProvince==null}"> <option>-&nbsp;-&nbsp;市&nbsp;-&nbsp;-</option></s:if>		
+										          <s:if  test="%{#session.user.getProvince()==null}"> <option>-&nbsp;-&nbsp;市&nbsp;-&nbsp;-</option></s:if>		
 										          <s:else><option><h5><s:property value="#session.user.getCity().getName()"/></h5></option></s:else>						      				      
 										 </select></th>
 									

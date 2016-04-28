@@ -1,6 +1,5 @@
 package net.zmcheng.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -81,7 +80,7 @@ public class User implements java.io.Serializable{
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	@ManyToOne(cascade ={CascadeType.ALL},targetEntity = Province.class,fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Province.class,fetch = FetchType.LAZY)
 	 @JoinColumn(name="provinceId")
 	public Province getProvince() {
 		return province;
@@ -89,7 +88,7 @@ public class User implements java.io.Serializable{
 	public void setProvince(Province province) {
 		this.province = province;
 	}
-	@ManyToOne(cascade ={CascadeType.ALL},targetEntity = City.class)
+	@ManyToOne(targetEntity = City.class)
 	 @JoinColumn(name="cityId")
 	public City getCity() {
 		return city;

@@ -23,20 +23,20 @@
       <div class="theLoginArea" id="loginBox">
         <p style="position: relative;">
           <label for="LoginForm_email">用户名：</label>
-          <input placeholder="请输入您的用户名" name="name"  type="text" maxlength="255" />
+          <input placeholder="请输入您的用户名"  required="required" name="name"  type="text" maxlength="255" />
           <span>请输入您的用户名</span> </p>
         <p style="position: relative;">
           <label for="LoginForm_password">密码设置：</label>
-          <input placeholder="请输入您的密码" name="password" type="password" maxlength="16" />
+          <input placeholder="请输入您的密码" required="required"  name="password" type="password" maxlength="16" />
           <span>请输入您的密码</span> </p>
         <p style="position: relative;">
           <label for="LoginForm_password">验证密码：</label>
-          <input placeholder="请再次输入您的密码" name="passwordAgain" type="password" maxlength="16" />
+          <input placeholder="请再次输入您的密码" required="required" name="passwordAgain" type="password" maxlength="16" />
           <span>请输入您的密码</span> </p>
         
         <div class="loginSubmitBnt">
           <div class="reg_submit">
-            <input name="userSubmit" class="theSubmitButton" value="" type="submit" />
+            <input  class="theSubmitButton"  value="" type="submit" />
             <s:property value="#request.usererror" />
           </div>
         </div>

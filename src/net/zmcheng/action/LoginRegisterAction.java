@@ -64,8 +64,8 @@ public class LoginRegisterAction extends ActionSupport implements ModelDriven<Us
 		return SUCCESS;
 	}
  public String register() throws Exception{
-	 if(!user.getPassword().equals(passwordAgain)||(user.getPassword()==null)||(passwordAgain==null)){
-		 request.setAttribute("usererror", "注册失败，请重新注册");
+	 if(!user.getPassword().equals(passwordAgain)){
+		 request.setAttribute("usererror", "注册失败");
 		 return INPUT;
 	 }
 	 user.setCreatetime(MyDate.getTime());
@@ -74,13 +74,12 @@ public class LoginRegisterAction extends ActionSupport implements ModelDriven<Us
 	 flag = userServiceImpl.UserRegister(user);
 	  if(flag==true){
 		  HttpSession httpSession = request.getSession();
- 		 httpSession = request.getSession();
      	 httpSession.setAttribute("user", user);
     	 httpSession.setAttribute("province", province);
      	 httpSession.setMaxInactiveInterval(5000);
 			return SUCCESS;
 		}
-	   else request.setAttribute("usererror", "注册失败，请重新注册");
+	   else request.setAttribute("usererror", "注册失败");
 		return INPUT;
 	}
   
