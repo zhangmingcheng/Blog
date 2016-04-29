@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,6 +22,7 @@ public class Article implements java.io.Serializable{
 	 private Integer id;
 	 private User user;
 	 private Set<ArticleReply> articleReplys = new HashSet<ArticleReply>();  
+	 private Type type;
      private String title;
      private int readNum;
      private String postdate;
@@ -109,6 +111,15 @@ public class Article implements java.io.Serializable{
 
 	public void setMessageNum(int messageNum) {
 		this.messageNum = messageNum;
+	}
+	@ManyToOne(targetEntity = Type.class,fetch=FetchType.LAZY)
+	 @JoinColumn(name="typeId")
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
 	}
 
 

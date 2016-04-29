@@ -5,7 +5,7 @@
 <struts>
     <package name="articleInformation"  namespace="/text"  extends="struts-default">
     
-        <action name="write" class="net.zmcheng.action.ArticleAction"  method="write">
+       <action name="write" class="net.zmcheng.action.ArticleAction"  method="write">
             <result>/WEB-INF/wp-admin/writerAfter.jsp</result>
         </action>   
         <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
@@ -38,9 +38,12 @@
             <result>/WEB-INF/wp-admin/updateFriendUrl.jsp</result>
         </action>
         <!-- 文章类别 -->
+        <action name="articleTypes" class="net.zmcheng.action.TypeAction" >
+            <result>/WEB-INF/wp-admin/writeArticle.jsp</result>
+        </action>
         <action name="allType" class="net.zmcheng.action.TypeAction" >
             <result>/WEB-INF/wp-admin/ArticleType.jsp</result>
-        </action>   
+        </action>  
          <action name="addType" class="net.zmcheng.action.TypeAction"  method="add">
             <result>/WEB-INF/wp-admin/ArticleType.jsp</result>
         </action>

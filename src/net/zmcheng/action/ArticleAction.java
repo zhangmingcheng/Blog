@@ -14,8 +14,10 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import net.zmcheng.model.Article;
 import net.zmcheng.model.ArticleMessages;
+import net.zmcheng.model.Type;
 import net.zmcheng.model.User;
 import net.zmcheng.service.articleService;
+import net.zmcheng.service.typeService;
 import net.zmcheng.tool.MyDate;
 
 @SuppressWarnings("serial")
@@ -23,14 +25,10 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 
 	private Article article = new Article();
 	private List<ArticleMessages> list = new ArrayList<ArticleMessages>();
-	public List<ArticleMessages> getList() {
-		return list;
-	}
-	public void setList(List<ArticleMessages> list) {
-		this.list = list;
-	}
+	private int types;
 	private HttpServletRequest request;
 	private articleService articleServiceImpl;
+	private typeService typeServiceImpl;
 	private int articleReplyNum;
 	private int zanCount;
 	public void setServletRequest(HttpServletRequest request){
@@ -47,8 +45,13 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     	article.setZanNum(0);
     	article.setReadNum(0);
     	article.setPostdate(MyDate.getTime());
+    	 if(types!=0){
+      	    Type type = typeServiceImpl.getType(types);
+      	    article.setType(type);
+      	   }
     	articleServiceImpl.write(article);
    	    request.setAttribute("articleId", article.getId());
+   	    System.out.println("type===="+types);
     	return SUCCESS;
     }
     //编辑指定博文,为指定博文传入之前存的内容
@@ -113,5 +116,23 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	}
 	public void setArticleReplyNum(int articleReplyNum) {
 		this.articleReplyNum = articleReplyNum;
+	}
+	public int getTypes() {
+		return types;
+	}
+	public void setTypes(int types) {
+		this.types = types;
+	}
+	public List<ArticleMessages> getList() {
+		return list;
+	}
+	public void setList(List<ArticleMessages> list) {
+		this.list = list;
+	}
+	public typeService getTypeServiceImpl() {
+		return typeServiceImpl;
+	}
+	public void setTypeServiceImpl(typeService typeServiceImpl) {
+		this.typeServiceImpl = typeServiceImpl;
 	}
 }

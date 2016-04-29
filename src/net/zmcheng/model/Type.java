@@ -1,9 +1,13 @@
 package net.zmcheng.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +16,7 @@ import javax.persistence.Table;
 public class Type  implements java.io.Serializable{
      private Integer id;
      private String name;
+     private Set<Article> articles = new HashSet<Article>();  
 	
     @Id
     @GeneratedValue
@@ -30,5 +35,13 @@ public class Type  implements java.io.Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-     
+	@OneToMany(mappedBy="type")//默认延迟加载
+	public Set<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(Set<Article> articles) {
+		this.articles = articles;
+	}
+
 }

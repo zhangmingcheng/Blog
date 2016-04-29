@@ -36,9 +36,15 @@ div {
 			<div class="col-md-9">
 			   <h4 style="color:blue" >撰写新文章:</h4>
 				<div class="main" style="margin: 20px 0px;">
-					<form method="post" action="/Blog/text/write.action">
+					<form method="post" action="/Blog/text/write">
 					<table class="table">
 					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" required="required"></th></tr>
+					  <tr><th> 分类：</th><th><select  class="title_input" name="types">
+ 							<option  value="0">----选择分类----</option>
+ 					       <s:iterator value="list"  id="selectNum1">                
+                                <option value="${selectNum1.getId()}">${selectNum1.getName()}</option>       
+                        </s:iterator>   
+ 					</select></th></tr>
 					<tr>
 					<th>简述：</th><th><textarea class="form-control" rows="3" name="brief"></textarea></th>
 					</tr>
