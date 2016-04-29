@@ -37,5 +37,18 @@
          <action name="updateLink2" class="net.zmcheng.action.LinkAction"  method="update2">
             <result>/WEB-INF/wp-admin/updateFriendUrl.jsp</result>
         </action>
+        <!-- 文章类别 -->
+        <action name="allType" class="net.zmcheng.action.TypeAction" >
+            <result>/WEB-INF/wp-admin/ArticleType.jsp</result>
+        </action>   
+         <action name="addType" class="net.zmcheng.action.TypeAction"  method="add">
+            <result>/WEB-INF/wp-admin/ArticleType.jsp</result>
+        </action>
+         <action name="updateType" class="net.zmcheng.action.TypeAction"  method="update">
+            <result>/WEB-INF/wp-admin/updateType.jsp</result>
+        </action>
+         <action name="updateType2" class="net.zmcheng.action.TypeAction"  method="update2">
+            <result>/WEB-INF/wp-admin/updateType.jsp</result>
+        </action>
  </package>
 </struts>

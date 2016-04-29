@@ -46,11 +46,10 @@
 			<!-- 右半部分 -->
 			<div class="col-md-9">
 			<h4>修改友链</h4>
-			<form method="post" action="/Blog/text/updateLink2.action">
+			<form method="post" action="/Blog/text/updateType2.action">
 				     <div style="display: none"><input type="text" name="id" value="${id}"/></div>
 					<table  class="table table-hover table-bordered">	
-					    <tr class="success"><th>友链名称:</th><th><input type="text" name="name" id="name" value="${name}" placeholder="必填" required="required" /></th></tr>
-					    <tr class="success"><th>友链URL:</th><th><input type="text" name="url" id="url"  value="${url}"  placeholder="必填" required="required" /></th></tr>
+					    <tr class="success"><th>文章类别:</th><th><input type="text" name="name" id="name" value="${name}" placeholder="必填" required="required" /></th></tr>		    
 					    <tr class="success"><th><input type="submit"  value="确定编辑" class="btn btn-primary" ></th><th><s:property value="result"/> </th></tr>
 					</table>
 			</form>             

@@ -49,13 +49,27 @@
                 </nav>              
                     
              </div>
-             <div class="col-md-4" style="margin-left:5%;background-color: black; height: 550px">
-             
+             <div class="col-md-4" style="margin-left:5%;background-color: #FFFFFF;margin-top:10px">
+                    <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">关于博客 <hr></div>
+                    <div style="font-weight:bold;font-size: 15px;text-align: center;padding-bottom: 5px">张明成的个人博客</div>
+                    <div style="margin-left: 1%;margin-right: 1%"><p>本博客是多用户团体博客，用于记录团体的生活、学习和工作中遇到的一些问题和心得。
+                       当然，目前此博客只有我在使用，欢迎志趣相投的人加入我的团体，一起使用我的博客系统，我可以告诉您进入后台的地址，
+                       另外，本博客中所有内容均为原创，如需转载，请注明出处（<a href="http://www.zmcheng.net">http://www.zmcheng.net</a>）。
+                      本人不是大神，但是现在正在向着大神努力，如果您发现博客中有错误或者可以改进的地方，敬请指正！</p></div>
+                     <div > <hr></div>
+                     <div style="margin-left: 1%;text-align: left;font-weight:bold;font-size: 15px;padding-top: 5px;">
+                      联系方式：<br/><br/>
+                     <table class="table table-hover">
+                        <tr class="warning"><th>QQ: 1249736987</th></tr>
+                        <tr class="danger"><th> 邮箱：zmc@zmcheng.net</th></tr>
+                        <tr class="info"><th> 微信：1249736988</th></tr>              
+                     </table>
+                     </div>
              </div>
         </div>
     </div>
 
-    <div class="blog-footer" style="height: 40px">
+    <div class="blog-footer" style="height: 50px;text-align: center;">
       Blog template built by <a href="https://www.zmcheng.net">@zmcheng</a>.
     </div>
 

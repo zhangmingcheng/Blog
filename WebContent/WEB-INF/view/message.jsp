@@ -41,7 +41,7 @@
                       <table style="width:100%">
                           <tr><th><textarea  placeholder="说点什么吧..." class="form-control" rows="3" name="content"></textarea></th></tr>        
                           <tr><th><br/></th></tr>
-                          <tr><th>用户名：<input type="text" placeholder="必填" name="sender"></th></tr>            
+                          <tr><th>用户名：<input type="text" placeholder="必填" name="sender"  required="required"></th></tr>            
                           <tr><th><br/></th></tr>
                           <tr><th><input type="submit" class="btn btn-success" value="提交"></th></tr>
                        </table>

@@ -15,8 +15,8 @@
    <script src="<%=path %>/js/prototype.js"></script>
   </head>
   <script type="text/javascript">
-  function DeleteLink(id){
-	  var url = '/Blog/ajax/deleteLink';
+  function DeleteType(id){
+	  var url = '/Blog/ajax/deleteType';
   	   var param = 'id='+id;
   	   var myAjax = new Ajax.Request(
   			  url,{method: 'post', parameters: param, onComplete:deleteFriendLink, asynchronous: true}    	 
@@ -25,14 +25,14 @@
   function deleteFriendLink(request){
 	  var temp = request.responseText.evalJSON();
  	   var strs =  '<tr style="height:30px">'+
-        ' <th>友链名称</th><th>友链URL</th><th>日期</th><th>编辑</th><th>删除</th>'+
+        ' <th>文章类别</th><th>编辑</th><th>删除</th>'+
         '</tr>';
         for(var n = 0;n<temp.length;n++){
-     	   strs+='<tr style="height:50px"><td>'+temp[n].name+'</td><td><a href="'+temp[n].url+'"  target="_blank">'+temp[n].url+'</a></td><td>'+temp[n].time+'</td>'+
-     	   '<td><a href="/Blog/text/updateLink?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
-     	 '<td><button type="button" class="btn btn-success" onclick="DeleteLink('+temp[n].id+')">删除</button></td></tr>';
+     	   strs+='<tr style="height:50px"><td>'+temp[n].name+'</td>'+
+     	   '<td><a href="/Blog/text/updateType?id='+temp[n].id+'"><button type="button" class="btn btn-info">编辑</button></a></td>'+
+     	 '<td><button type="button" class="btn btn-success" onclick="DeleteType('+temp[n].id+')">删除</button></td></tr>';
         }            
-      $("deletelinks").innerHTML = strs;
+      $("deletetypes").innerHTML = strs;
   }
   </script>
   <body>
@@ -67,26 +67,22 @@
 			<!-- 右半部分 -->
 			<div class="col-md-9">
 			<h4>添加友链</h4>
-			<form method="post" action="/Blog/text/addLink.action">
+			<form method="post" action="/Blog/text/addType.action">
 					<table  class="table table-hover table-bordered">
-					    <tr class="success"><th>友链名称:</th><th><input type="text" name="name" id="name" placeholder="必填"  required="required" /></th></tr>
-					    <tr class="success"><th>友链URL:</th><th><input type="text" name="url" id="url" placeholder="必填"  required="required" /></th></tr>
+					    <tr class="success"><th>文章类别:</th><th><input type="text" name="name" id="name" placeholder="必填"  required="required" /></th></tr>
 					    <tr class="success"><th><input type="submit"  value="确定添加" class="btn btn-primary" ></th><th><s:property value="result"/> </th></tr>
 					</table>
 			</form>
-			<h5>共有<s:property value="allRow"/>条友链</h5>
 			<hr>		
-            <table class="table table-hover table-bordered" id="deletelinks">
+            <table class="table table-hover table-bordered" id="deletetypes">
                     <tr style="height:30px">
-                       <th>友链名称</th><th>友链URL</th><th>日期</th><th>编辑</th><th>删除</th>
+                       <th>文章类别</th><th>编辑</th><th>删除</th>
                    </tr>                            
                     <s:iterator value="list"  id="selectNum1">                           
                        <tr style="height:50px">
-                         <td>${selectNum1.getName()}</td>
-                         <td><a href="${selectNum1.getUrl()}"  target="_blank">${selectNum1.getUrl()}</a></td>                    
-                         <td>${selectNum1.getTime()}</td>
-                         <td><a href="/Blog/text/updateLink?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>
-                         <td><button type="button" class="btn btn-success"  onclick="DeleteLink(${selectNum1.getId()})">删除</button></td>
+                         <td>${selectNum1.getName()}</td>                     
+                         <td><a href="/Blog/text/updateType?id=${selectNum1.getId()}"><button type="button" class="btn btn-info">编辑</button></a></td>
+                         <td><button type="button" class="btn btn-success"  onclick="DeleteType(${selectNum1.getId()})">删除</button></td>
                       </tr>          
                  </s:iterator>    
                </table>
@@ -96,10 +92,10 @@
                             <li><a href="#">Previous</a></li>
                           </s:if>
                           <s:else>
-                             <li><a href="/Blog/text/allLink?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
+                             <li><a href="/Blog/text/allType?currentPage=<s:property value="currentPage-1"/>">Previous</a></li>
                           </s:else>
                            <s:if test="currentPage !=totalPage">  
-                              <li> <a href="/Blog/text/allLink?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
+                              <li> <a href="/Blog/text/allType?currentPage=<s:property value="currentPage+1"/>">Next</a></li>
                            </s:if>
                            <s:else>
                               <li><a href="#">Next</a></li>

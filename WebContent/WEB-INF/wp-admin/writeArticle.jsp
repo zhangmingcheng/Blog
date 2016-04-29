@@ -38,12 +38,12 @@ div {
 				<div class="main" style="margin: 20px 0px;">
 					<form method="post" action="/Blog/text/write.action">
 					<table class="table">
-					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle"></th></tr>
+					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" required="required"></th></tr>
 					<tr>
 					<th>简述：</th><th><textarea class="form-control" rows="3" name="brief"></textarea></th>
 					</tr>
 					<tr><th colspan="2">
-						<textarea id="myEditor" style="height: 270px; margin: 5px 0px;" name="content" ></textarea></th></tr>
+						<textarea id="myEditor" style="height: 270px; margin: 5px 0px;" name="content"></textarea></th></tr>
 						<tr><th>
 							   <input type="submit" value="提交" type="button"   class="btn btn-primary"></th><th> <input
 								type="reset" value="重置"  type="button"  class="btn btn-primary"

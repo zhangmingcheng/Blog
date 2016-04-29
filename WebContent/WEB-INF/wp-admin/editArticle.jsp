@@ -94,7 +94,7 @@ div {
 					<form method="post" action="/Blog/text/edit2.action">
 					<div style="display: none;"><input  type="text"  name="id" value="${id}"></div>
 					<table class="table">
-					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" value="${title}"></th></tr>
+					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" value="${title}" required="required"></th></tr>
 					<tr>
 					<th>简述：</th><th><textarea class="form-control" rows="3" name="brief"  id="brief">${brief}</textarea></th>
 					</tr>

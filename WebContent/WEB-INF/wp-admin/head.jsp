@@ -9,6 +9,7 @@
 				    <li><a class="blog-nav-item" href="/Blog/text/articles">文章管理</a></li>
 					<li><a class="blog-nav-item" href="/Blog/wp-admin/writeArticle">写文章</a></li>		
 					<li><a class="blog-nav-item" href="/Blog/text/allLink">友情链接</a></li>	
+					<li><a class="blog-nav-item" href="/Blog/text/allType">文章分类</a></li>	
 					<li><a class="blog-nav-item" href="/Blog/text/allMessages"">留言管理</a></li>
 				</ul>
 			</div>
