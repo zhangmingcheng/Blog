@@ -18,6 +18,7 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 		private Paging paging = new Paging();
 		private articleService articleServiceImpl;
 		private String result;
+		private String keyWord;
 		public Paging getModel(){
 			return paging;
 		}
@@ -35,6 +36,11 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 			   }
 			   return SUCCESS;
 		   }
+		 //关键字搜索文章
+		 public String keySearch() throws Exception{
+			   list =  articleServiceImpl.getKeyArticles(keyWord);
+			 return SUCCESS;
+		 }
 		  //删除指定博文
 		 public String delete() throws Exception{
 			 Article article2 =  articleServiceImpl.getArticle(id);
@@ -76,5 +82,11 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 			}
 			public void setId(int id) {
 				this.id = id;
+			}
+			public String getKeyWord() {
+				return keyWord;
+			}
+			public void setKeyWord(String keyWord) {
+				this.keyWord = keyWord;
 			}
 	}

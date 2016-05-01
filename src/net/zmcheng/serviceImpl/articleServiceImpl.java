@@ -24,6 +24,9 @@ public class articleServiceImpl implements articleService {
   	 public List<ArticleMessages> getAllArticleMessage(int id) throws Exception{
   		 return articleDaoImpl.getAllArticleMessage(id);
   	 }
+  	public List<Article> getKeyArticles(String keyWord) throws Exception{
+  		return  articleDaoImpl. getKeyArticles(keyWord);
+  	}
   //得到所有博文
   	public int getAllArticle() throws Exception{
   		return articleDaoImpl.getAllArticle();

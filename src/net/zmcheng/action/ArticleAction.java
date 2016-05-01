@@ -93,6 +93,10 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
         article.setPostdate(article2.getPostdate());
         article.setReadNum(article2.getReadNum()+1);
         article2.setReadNum(article2.getReadNum()+1);
+        if(article2.getType()!=null){
+        	types =1;
+        	typesValue=article2.getType().getName();
+        }
         articleServiceImpl.update(article2);
         article.setUser(article2.getUser());
         list =  articleServiceImpl.getAllArticleMessage(article.getId());

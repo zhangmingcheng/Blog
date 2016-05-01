@@ -20,5 +20,8 @@
         <action name="addReplyMessage" class="net.zmcheng.action.MessageAction"  method="addReply">
              <result>/WEB-INF/view/message.jsp</result>
         </action>      
+        <action name="keySearch" class="net.zmcheng.action.AllArticleAction" method="keySearch" >
+            <result>/WEB-INF/view/search.jsp</result>
+         </action>  
  </package>
 </struts>

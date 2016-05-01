@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -44,6 +46,23 @@ public class articleDaoImpl implements articleDao {
 		query.setMaxResults(length);
 		temp = query.list();
 		return temp;
+	}
+	public List<Article> getKeyArticles(String keyWord) throws Exception{
+		Session session = sessionFactory.getCurrentSession();		
+		List<Article> temp = new  ArrayList<Article>();
+		List<Article> temp2 = new  ArrayList<Article>();
+		Query query = session.createQuery("from Article as  u order by u.id desc");
+		temp = query.list();
+		for(Article article:temp){
+           //正则	
+			Pattern p = Pattern.compile(keyWord);
+			Matcher m = p.matcher( article.getTitle());
+			boolean result = m.find();
+			if( result==true){
+				temp2.add(article);
+			}
+		}
+		return temp2;
 	}
 	//写博客
 	public void write(Article article) throws Exception {

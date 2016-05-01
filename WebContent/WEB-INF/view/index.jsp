@@ -46,10 +46,13 @@
                               <li><a href="#">Next</a></li>
                            </s:else>
                           </ul>
-                </nav>              
-                    
+                </nav>                          
              </div>
-             <div class="col-md-4" style="margin-left:5%;background-color: #FFFFFF;margin-top:10px">
+           
+             
+             <div>
+             <!-- 第一部分 -->
+                 <div  class="col-md-4" style="margin-left:5%;background-color: #FFFFFF;margin-top:10px">
                     <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">关于博客 <hr></div>
                     <div style="font-weight:bold;font-size: 15px;text-align: center;padding-bottom: 5px">张明成的个人博客</div>
                     <div style="margin-left: 1%;margin-right: 1%"><p>本博客是多用户团体博客，用于记录团体的生活、学习和工作中遇到的一些问题和心得。
@@ -65,6 +68,15 @@
                         <tr class="info"><th> 微信：1249736988</th></tr>              
                      </table>
                      </div>
+                   </div>
+               <!---->
+                 <div class="col-md-4" style="margin-left:5%;background-color: #FFFFFF;margin-top:15px">
+                      <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">搜索<hr></div>
+                       <div style="margin-left:5%"><form method="post" action="/Blog/head/keySearch"><table><tr><th>
+                          <input type="text"  name="keyWord" style="height:30px" required="required" />&nbsp;&nbsp;<button type="submit" class="btn btn-info" style="height:30px;width:100px">搜索</button>
+                       </th></tr></table></form><br/></div>
+                </div>
+               
              </div>
         </div>
     </div>

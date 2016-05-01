@@ -18,6 +18,7 @@ public interface articleService {
     public List<ArticleMessages> getAllArticleMessage(int id) throws Exception;
   //分页查询数据setFirstResult(start)中索引start是从0开始的
   	public List<Article> getArticles(final int start,final int  length) throws Exception;
+ 	public List<Article> getKeyArticles(String keyWord) throws Exception;
   //得到所有博文
   	public int getAllArticle() throws Exception;
 	public int getArticleNum(int id) throws Exception;
