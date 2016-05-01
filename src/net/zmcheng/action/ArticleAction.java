@@ -27,6 +27,8 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	private Article article = new Article();
 	private List<ArticleMessages> list = new ArrayList<ArticleMessages>();
 	private List<Type> list2 = new ArrayList<Type>();
+	private String flagName;
+	private List<Article> list3 = new ArrayList<Article>();
 	private int types;
 	private String typesValue;
 	private HttpServletRequest request;
@@ -54,6 +56,12 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
       	   }
     	articleServiceImpl.write(article);
    	    request.setAttribute("articleId", article.getId());
+    	return SUCCESS;
+    }
+    //得到指定类型的文章
+    public String selectTypeArticle() throws Exception{
+    	flagName =  typeServiceImpl.getType(types).getName();
+    	 list3 = articleServiceImpl.getTypeArticles(types);
     	return SUCCESS;
     }
     //编辑指定博文,为指定博文传入之前存的内容
@@ -156,10 +164,22 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	public void setList2(List<Type> list2) {
 		this.list2 = list2;
 	}
+	public List<Article> getList3() {
+		return list3;
+	}
+	public void setList3(List<Article> list3) {
+		this.list3 = list3;
+	}
 	public String getTypesValue() {
 		return typesValue;
 	}
 	public void setTypesValue(String typesValue) {
 		this.typesValue = typesValue;
+	}
+	public String getFlagName() {
+		return flagName;
+	}
+	public void setFlagName(String flagName) {
+		this.flagName = flagName;
 	}
 }

@@ -16,10 +16,10 @@
 	
     <div class="container" >
         <div class="row">
-           <h3>搜索关键词：${keyWord}</h3>
+           <h3>标签：${flagName}</h3>
              <div class="col-md-11" style="margin-left: 3%">
                    
-                    <s:iterator value="list"  id="selectNum1">                
+                    <s:iterator value="list3"  id="selectNum1">                
                         <div style="background-color: #FFFFFF;magin-top:10px">
                               <div style="margin-left:5%;padding-bottom: 2%">
                                 <h5>&nbsp;</h5>

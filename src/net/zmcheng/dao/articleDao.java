@@ -23,4 +23,6 @@ public interface articleDao {
 	public int getArticleNum(int id) throws Exception;
 	public void addArticleReply(ArticleReply articleReply) throws Exception;
 	public List<Article> getKeyArticles(String keyWord) throws Exception;
+	public List<Article> getHotArticle() throws Exception;
+	public List<Article> getTypeArticles(int id) throws Exception;
 }

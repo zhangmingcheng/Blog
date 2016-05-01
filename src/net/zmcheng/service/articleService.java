@@ -23,4 +23,8 @@ public interface articleService {
   	public int getAllArticle() throws Exception;
 	public int getArticleNum(int id) throws Exception;
 	public void addArticleReply(ArticleReply articleReply) throws Exception;
+	//热门文章
+	public List<Article> getHotArticle() throws Exception;
+	//得到指定标签的所有文章
+	public List<Article> getTypeArticles(int id) throws Exception;
 }

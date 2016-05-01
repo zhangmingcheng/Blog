@@ -21,11 +21,17 @@ public class articleServiceImpl implements articleService {
   	public int getArticleNum(int id) throws Exception{
   		return articleDaoImpl.getArticleNum(id);
   	}
+  	public List<Article> getTypeArticles(int id) throws Exception{
+  		return articleDaoImpl.getTypeArticles(id);
+  	}
   	 public List<ArticleMessages> getAllArticleMessage(int id) throws Exception{
   		 return articleDaoImpl.getAllArticleMessage(id);
   	 }
   	public List<Article> getKeyArticles(String keyWord) throws Exception{
   		return  articleDaoImpl. getKeyArticles(keyWord);
+  	}
+  	public List<Article> getHotArticle() throws Exception{
+  		return articleDaoImpl.getHotArticle();
   	}
   //得到所有博文
   	public int getAllArticle() throws Exception{

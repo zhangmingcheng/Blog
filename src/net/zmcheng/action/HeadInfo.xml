@@ -5,12 +5,15 @@
 <struts>
     <package name="HeadarticleInformation"  namespace="/head"  extends="struts-default">
     
-         <action name="articles" class="net.zmcheng.action.AllArticleAction" >
+         <action name="articles" class="net.zmcheng.action.AllArticleAction"  method="headIndex">
             <result>/WEB-INF/view/index.jsp</result>
          </action>  
          <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
             <result>/WEB-INF/view/showArticle.jsp</result>
-         </action>   
+         </action>
+          <action name="selectTypeArticle" class="net.zmcheng.action.ArticleAction"  method="selectTypeArticle">
+            <result>/WEB-INF/view/typeArticles.jsp</result>
+         </action>
          <action name="messages" class="net.zmcheng.action.MessageAction" >
             <result>/WEB-INF/view/message.jsp</result>
          </action>

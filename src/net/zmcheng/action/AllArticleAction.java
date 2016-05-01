@@ -1,26 +1,53 @@
 package net.zmcheng.action;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import net.zmcheng.model.Article;
+import net.zmcheng.model.Link;
+import net.zmcheng.model.Type;
 import net.zmcheng.service.articleService;
+import net.zmcheng.service.linkService;
+import net.zmcheng.service.typeService;
 import net.zmcheng.tool.Paging;
 
 @SuppressWarnings("serial")
 public class AllArticleAction extends  ActionSupport implements Serializable , ModelDriven<Paging>{
 	
 		private List<Article> list;//要返回的某一页的记录
+		private List<Article> list2;//热门文章
+		private List<Type> list3 = new ArrayList<Type>();
+		private List<Link> list4 = new ArrayList<Link>();
 		private int id;
 		private Paging paging = new Paging();
 		private articleService articleServiceImpl;
+		private typeService typeServiceImpl;
+		private linkService linkServiceImpl;
 		private String result;
 		private String keyWord;
 		public Paging getModel(){
 			return paging;
+		}
+		//前端首页
+		public String headIndex() throws Exception{
+			  int len = articleServiceImpl.getAllArticle();
+			   int totalpage = paging.countTotalPage(len);
+			   paging.setAllRow(len);
+			   paging.setTotalPage(totalpage);
+			   int start =paging.countOffset();
+			   list =  articleServiceImpl.getArticles(start, Paging.getPageSize());
+			   for(Article temp:list){
+				   int num =  articleServiceImpl.getArticleMessageNum(temp.getId());
+				   temp.setMessageNum(num);
+			   }
+			   list2 = articleServiceImpl.getHotArticle();
+			   list3 = typeServiceImpl.selectAllType(0,Paging.getPageSize());
+			   list4 = linkServiceImpl.selectAllLink(0, Paging.getPageSize());
+			return SUCCESS;
 		}
 		//得到指定页数的数据
 		 public String execute() throws Exception{
@@ -88,5 +115,35 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 			}
 			public void setKeyWord(String keyWord) {
 				this.keyWord = keyWord;
+			}
+			public List<Article> getList2() {
+				return list2;
+			}
+			public void setList2(List<Article> list2) {
+				this.list2 = list2;
+			}
+			public List<Type> getList3() {
+				return list3;
+			}
+			public void setList3(List<Type> list3) {
+				this.list3 = list3;
+			}
+			public List<Link> getList4() {
+				return list4;
+			}
+			public void setList4(List<Link> list4) {
+				this.list4 = list4;
+			}
+			public typeService getTypeServiceImpl() {
+				return typeServiceImpl;
+			}
+			public void setTypeServiceImpl(typeService typeServiceImpl) {
+				this.typeServiceImpl = typeServiceImpl;
+			}
+			public linkService getLinkServiceImpl() {
+				return linkServiceImpl;
+			}
+			public void setLinkServiceImpl(linkService linkServiceImpl) {
+				this.linkServiceImpl = linkServiceImpl;
 			}
 	}

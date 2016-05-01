@@ -64,6 +64,23 @@ public class articleDaoImpl implements articleDao {
 		}
 		return temp2;
 	}
+	public List<Article> getHotArticle() throws Exception{
+		Session session = sessionFactory.getCurrentSession();		
+		List<Article> temp = new  ArrayList<Article>();
+		Query query = session.createQuery("from Article as  u order by u.readNum desc");
+		query.setFirstResult(0);
+		query.setMaxResults(8);
+		temp = query.list();
+		return temp;
+	}
+	public List<Article> getTypeArticles(int id) throws Exception{
+		Session session = sessionFactory.getCurrentSession();		
+		List<Article> temp = new  ArrayList<Article>();
+		Query query = session.createQuery("from Article as  u where typeId=:tempId order by u.id desc");
+	   query.setInteger("tempId", id);
+		temp = query.list();
+		return temp;
+	}
 	//写博客
 	public void write(Article article) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
