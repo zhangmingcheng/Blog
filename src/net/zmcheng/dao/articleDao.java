@@ -20,6 +20,7 @@ public interface articleDao {
   	public List<Article> getArticles(final int start,final int  length) throws Exception;
   //得到所有博文
   	public int getAllArticle() throws Exception;
+  	public List<Article> getALLArticle() throws Exception;
 	public int getArticleNum(int id) throws Exception;
 	public void addArticleReply(ArticleReply articleReply) throws Exception;
 	public List<Article> getKeyArticles(String keyWord) throws Exception;

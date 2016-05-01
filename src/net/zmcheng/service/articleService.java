@@ -27,4 +27,6 @@ public interface articleService {
 	public List<Article> getHotArticle() throws Exception;
 	//得到指定标签的所有文章
 	public List<Article> getTypeArticles(int id) throws Exception;
+	//文章档案
+	public List<Article> getALLArticle() throws Exception;
 }

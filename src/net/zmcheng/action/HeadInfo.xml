@@ -8,6 +8,9 @@
          <action name="articles" class="net.zmcheng.action.AllArticleAction"  method="headIndex">
             <result>/WEB-INF/view/index.jsp</result>
          </action>  
+         <action name="allArtilces" class="net.zmcheng.action.AllArticleAction"  method="allArtilces">
+            <result>/WEB-INF/view/allArticles.jsp</result>
+         </action>  
          <action name="open" class="net.zmcheng.action.ArticleAction"  method="open">
             <result>/WEB-INF/view/showArticle.jsp</result>
          </action>

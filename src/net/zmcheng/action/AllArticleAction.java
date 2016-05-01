@@ -32,6 +32,11 @@ public class AllArticleAction extends  ActionSupport implements Serializable , M
 		public Paging getModel(){
 			return paging;
 		}
+		//文章档案
+		public String allArtilces() throws Exception{
+			list = articleServiceImpl.getALLArticle();
+			return SUCCESS;
+		}
 		//前端首页
 		public String headIndex() throws Exception{
 			  int len = articleServiceImpl.getAllArticle();

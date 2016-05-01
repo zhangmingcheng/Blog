@@ -21,6 +21,9 @@ public class articleServiceImpl implements articleService {
   	public int getArticleNum(int id) throws Exception{
   		return articleDaoImpl.getArticleNum(id);
   	}
+  	public List<Article> getALLArticle() throws Exception{
+  		return articleDaoImpl.getALLArticle();
+  	}
   	public List<Article> getTypeArticles(int id) throws Exception{
   		return articleDaoImpl.getTypeArticles(id);
   	}

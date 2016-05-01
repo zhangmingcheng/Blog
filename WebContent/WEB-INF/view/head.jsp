@@ -9,7 +9,7 @@
         <div class="col-md-5">       
            <ul class="nav nav-pills">
               <li><a class="blog-nav-item active" href="/Blog/head/articles">首页</a></li>
-              <li><a class="blog-nav-item" href="#">文章档案</a></li>
+              <li><a class="blog-nav-item" href="/Blog/head/allArtilces">文章档案</a></li>
               <li><a class="blog-nav-item" href="#">友情链接</a></li>
               <li><a class="blog-nav-item" href="/Blog/head/messages">留言板</a></li>
               <li><a class="blog-nav-item" href="#">关于本站</a></li>

@@ -64,6 +64,13 @@ public class articleDaoImpl implements articleDao {
 		}
 		return temp2;
 	}
+	public List<Article> getALLArticle() throws Exception{
+		Session session = sessionFactory.getCurrentSession();		
+		List<Article> temp = new  ArrayList<Article>();
+		Query query = session.createQuery("from Article as  u order by u.id desc");
+		temp = query.list();
+		return temp;
+	}
 	public List<Article> getHotArticle() throws Exception{
 		Session session = sessionFactory.getCurrentSession();		
 		List<Article> temp = new  ArrayList<Article>();

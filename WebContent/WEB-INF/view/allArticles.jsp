@@ -16,20 +16,11 @@
 	
     <div class="container" >
         <div class="row">
-           <h3>搜索关键词：${keyWord}</h3>
-             <div class="col-md-11" style="margin-left: 3%">
-                   
+             <div class="col-md-11" style="margin-left: 3%;background-color: #FFFFFF">
+             <h3>文章档案</h3>
+             <hr>
                     <s:iterator value="list"  id="selectNum1">                
-                        <div style="background-color: #FFFFFF;magin-top:10px">
-                              <div style="margin-left:5%;padding-bottom: 2%">
-                                <h5>&nbsp;</h5>
-                                 <h4 style="font-weight: bold;color:004B97"><a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a></h4>
-                                 <h5 style="color:#6C6C6C">${selectNum1.getUser().getName()}&nbsp;发布于&nbsp;${selectNum1.getPostdate()}&nbsp;&nbsp;阅读(${selectNum1.getReadNum()})&nbsp;&nbsp;
-                                 评论(${ selectNum1.getMessageNum()})&nbsp;&nbsp;</h5>
-                                 <p>${selectNum1.getBrief() }</p>
-                                <h5 style="font-weight: bold;"><a href="/Blog/head/open?id=${selectNum1.getId()}">【查看详情】</a></h5>                
-                             </div>
-                        </div>
+                      <h5>*&nbsp;${selectNum1.getPostdate()}&nbsp;<a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a>&nbsp;${selectNum1.getReadNum()}次浏览</h5>
                  </s:iterator>              
              </div>
         </div>
