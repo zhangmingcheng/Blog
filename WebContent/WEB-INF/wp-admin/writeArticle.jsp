@@ -39,7 +39,7 @@ div {
 					<form method="post" action="/Blog/text/write">
 					<table class="table">
 					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" required="required"></th></tr>
-					  <tr><th> 分类：</th><th><select  class="title_input" name="types">
+					<tr><th> 分类：</th><th><select  class="title_input" name="types">
  							<option  value="0">----选择分类----</option>
  					       <s:iterator value="list"  id="selectNum1">                
                                 <option value="${selectNum1.getId()}">${selectNum1.getName()}</option>       

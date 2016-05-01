@@ -95,6 +95,17 @@ div {
 					<div style="display: none;"><input  type="text"  name="id" value="${id}"></div>
 					<table class="table">
 					<tr><th style="width: 50px">  标题：</th><th><input  type="text"   name="title"  id="articleTitle" value="${title}" required="required"></th></tr>
+					<tr><th> 分类：</th><th><select  class="title_input" name="types">
+					<s:if test="%{types==0}">
+ 							<option  value="0">----选择分类----</option>
+ 					</s:if>
+ 					<s:else>
+ 						<option  value="${types}">${typesValue}</option>
+ 					</s:else>
+ 					       <s:iterator value="list2"  id="selectNum1">                
+                                <option value="${selectNum1.getId()}">${selectNum1.getName()}</option>       
+                        </s:iterator>   
+ 					</select></th></tr>
 					<tr>
 					<th>简述：</th><th><textarea class="form-control" rows="3" name="brief"  id="brief">${brief}</textarea></th>
 					</tr>

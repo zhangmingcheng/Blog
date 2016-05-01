@@ -19,13 +19,16 @@ import net.zmcheng.model.User;
 import net.zmcheng.service.articleService;
 import net.zmcheng.service.typeService;
 import net.zmcheng.tool.MyDate;
+import net.zmcheng.tool.Paging;
 
 @SuppressWarnings("serial")
 public class ArticleAction extends ActionSupport implements ModelDriven<Article> ,Serializable,ServletRequestAware{
 
 	private Article article = new Article();
 	private List<ArticleMessages> list = new ArrayList<ArticleMessages>();
+	private List<Type> list2 = new ArrayList<Type>();
 	private int types;
+	private String typesValue;
 	private HttpServletRequest request;
 	private articleService articleServiceImpl;
 	private typeService typeServiceImpl;
@@ -51,7 +54,6 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
       	   }
     	articleServiceImpl.write(article);
    	    request.setAttribute("articleId", article.getId());
-   	    System.out.println("type===="+types);
     	return SUCCESS;
     }
     //编辑指定博文,为指定博文传入之前存的内容
@@ -60,7 +62,12 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     	article.setContent(article2.getContent());
     	article.setTitle(article2.getTitle());
     	article.setBrief(article2.getBrief());
+    	if(article2.getType()!=null){
+    		this.setTypes(article2.getType().getId());
+        	this.setTypesValue(article2.getType().getName());
+    	}
     	list =  articleServiceImpl.getAllArticleMessage(article.getId());
+    	list2 = typeServiceImpl.selectAllType(0,Paging.getPageSize());
     	return SUCCESS;
     }
     //编辑指定博文，更新博文
@@ -70,6 +77,10 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
     	article2.setContent(article.getContent());
     	article2.setTitle(article.getTitle());
     	article2.setBrief(article.getBrief());
+    	if(types!=0){
+      	    Type type = typeServiceImpl.getType(types);
+      	    article2.setType(type);
+      	   }
     	articleServiceImpl.update(article2);
     	return SUCCESS;
     }
@@ -134,5 +145,17 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	}
 	public void setTypeServiceImpl(typeService typeServiceImpl) {
 		this.typeServiceImpl = typeServiceImpl;
+	}
+	public List<Type> getList2() {
+		return list2;
+	}
+	public void setList2(List<Type> list2) {
+		this.list2 = list2;
+	}
+	public String getTypesValue() {
+		return typesValue;
+	}
+	public void setTypesValue(String typesValue) {
+		this.typesValue = typesValue;
 	}
 }
