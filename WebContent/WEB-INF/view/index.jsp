@@ -87,25 +87,47 @@
                </div>
                <!--  -->
                   <div class="col-md-4" style="margin-left:5%;background-color: #FFFFFF;margin-top:15px">
-                         <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">文章分类<hr/></div>
-                          <table class="table table-hover">                 
-                           <tr  class="warning">                  
-                           <s:iterator value="list3"  id="selectNum3">              
-                                <th><a href="/Blog/head/selectTypeArticle?types=${selectNum3.getId()}">${selectNum3.getName()}</a></th>  
-                          </s:iterator>   
-                          </tr>
-                        </table>
+                         <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">文章分类</div>
+                           <div style="font: none">
+			                      <div style="float: left;width: 50%">
+			                               <table class="table table-hover">
+				                                   <s:iterator value="list3"  id="selectNum3"  status='st'>      
+					      					                <s:if test="#st.Odd">			
+					      					                  <tr class="warning"><th><a href="/Blog/head/selectTypeArticle?types=${selectNum3.getId()}">${selectNum3.getName()}</a></th> </tr>
+					      					               </s:if>
+		           			                    	</s:iterator>   	
+		      			                   </table>
+			                       </div>
+			                       <div style="float: right; width:50%">
+			                                  <table class="table table-hover">
+				                                             <s:iterator value="list3"  id="selectNum3"  status='st'>      
+				      					                        <s:if test="#st.Even"><tr  class="info"><th><a href="/Blog/head/selectTypeArticle?types=${selectNum3.getId()}">${selectNum3.getName()}</a></th></tr></s:if>
+		           				                        </s:iterator>   	
+		      			                     </table>
+			                      </div>
+			            </div>             
                </div>
                <!--  -->
                  <div class="col-md-4" style="margin-left:5%;background-color: #FFFFFF;margin-top:15px">
-                         <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">友情链接<hr/></div>
-                          <table class="table table-hover">                 
-                           <tr  class="info">                  
-                           <s:iterator value="list4"  id="selectNum4">              
-                                <th><a  href="${selectNum4.getUrl()}" target="_blank">${selectNum4.getName()}</a></th>  
-                          </s:iterator>   
-                          </tr>
-                        </table>
+                         <div style="text-align: left;font-weight:bold;font-size: 17px;padding-top: 5px;">友情链接</div>
+                         <div style="font: none">
+			                      <div style="float: left;width: 50%">
+			                               <table class="table table-hover">
+				                                   <s:iterator value="list4"  id="selectNum4"  status='st'>      
+					      					                <s:if test="#st.Odd">			
+					      					                  <tr class="active"><th><a  href="${selectNum4.getUrl()}" target="_blank">${selectNum4.getName()}</a></th> </tr>
+					      					               </s:if>
+		           			                    	</s:iterator>   	
+		      			                   </table>
+			                       </div>
+			                       <div style="float: right; width:50%">
+			                                  <table class="table table-hover">
+				                                             <s:iterator value="list3"  id="selectNum3"  status='st'>      
+				      					                        <s:if test="#st.Even"><tr  class="warning"><th><a  href="${selectNum4.getUrl()}" target="_blank">${selectNum4.getName()}</a></th></tr></s:if>
+		           				                        </s:iterator>   	
+		      			                     </table>
+			                      </div>
+			            </div>             
                </div>
                <!--  -->
              </div>
