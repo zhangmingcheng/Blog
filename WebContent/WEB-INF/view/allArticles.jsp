@@ -15,12 +15,12 @@
  <%@ include file="head.jsp"%>
 	
     <div class="container" >
-        <div class="row">
+        <div class="row">   
              <div class="col-md-11" style="margin-left: 3%;background-color: #FFFFFF">
-             <h3>文章档案</h3>
-             <hr>
+		             <h3>文章档案</h3>
+		             <hr>
                     <s:iterator value="list"  id="selectNum1">                
-                      <h5>*&nbsp;${selectNum1.getPostdate()}&nbsp;<a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a>&nbsp;${selectNum1.getReadNum()}次浏览</h5>
+                      <h5>*&nbsp;${selectNum1.getPostdate()}&nbsp;&nbsp;<a href="/Blog/text/open?id=${selectNum1.getId()}">${selectNum1.getTitle()}</a>&nbsp;&nbsp;&nbsp;${selectNum1.getReadNum()}次浏览</h5>
                  </s:iterator>              
              </div>
         </div>

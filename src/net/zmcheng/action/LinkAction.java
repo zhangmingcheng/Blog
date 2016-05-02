@@ -37,6 +37,10 @@ public class LinkAction extends  ActionSupport implements Serializable , ModelDr
 		   int start =paging.countOffset();
 		   list =  linkServiceImpl.selectAllLink(start, Paging.getPageSize());
 	 }
+	 public String allFriend() throws Exception{
+		 this.getLists();
+		 return SUCCESS;
+	 }
 	 public String add() throws Exception{
 		 if(this.getName().equals("")||this.getUrl().equals("")){
 			 this.getLists();

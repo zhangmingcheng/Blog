@@ -29,5 +29,8 @@
         <action name="keySearch" class="net.zmcheng.action.AllArticleAction" method="keySearch" >
             <result>/WEB-INF/view/search.jsp</result>
          </action>  
+           <action name="allFriend" class="net.zmcheng.action.LinkAction" method="allFriend" >
+            <result>/WEB-INF/view/skill.jsp</result>
+         </action>  
  </package>
 </struts>
