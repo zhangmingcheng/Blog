@@ -52,7 +52,7 @@
 					</table>
 			</div>
 	      <div class="sidebar block col-md-11" style="margin-left: 3%;background-color: #FFFFFF;margin-top:10px">
-				<h3>搜集了一些常用的技术网站</h3>
+				<h3>友情链接</h3>
 			     <p style="font-size: 13px;color: red;font-weight: normal;">Tips:若网站内容不符合国家规定或者与收录时的网站内容不符，将会撤销友链</p>
 			     <div style="font: none">
 			        <div style="float: left;width: 50%">
